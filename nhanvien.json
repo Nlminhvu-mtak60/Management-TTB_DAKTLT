@@ -1,0 +1,32 @@
+[
+  {
+    "MaNV": "NV001",
+    "HoTen": "Nguyễn Văn A",
+    "ChucVu": "Trưởng phòng",
+    "PhongBan": "Phòng Kỹ Thuật"
+  },
+  {
+    "MaNV": "NV002",
+    "HoTen": "Trần Thị B",
+    "ChucVu": "Nhân viên",
+    "PhongBan": "Phòng Kỹ Thuật"
+  },
+  {
+    "MaNV": "NV003",
+    "HoTen": "Lê Văn C",
+    "ChucVu": "Phó phòng",
+    "PhongBan": "Phòng Hậu Cần"
+  },
+  {
+    "MaNV": "NV004",
+    "HoTen": "Phạm Thị D",
+    "ChucVu": "Nhân viên",
+    "PhongBan": "Phòng Hậu Cần"
+  },
+  {
+    "MaNV": "NV005",
+    "HoTen": "Hoàng Văn E",
+    "ChucVu": "Bảo vệ",
+    "PhongBan": "Phòng An Ninh"
+  }
+]

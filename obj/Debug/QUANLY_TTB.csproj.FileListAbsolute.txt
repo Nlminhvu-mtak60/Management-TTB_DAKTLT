@@ -1,0 +1,15 @@
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\bin\Debug\data.json
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\bin\Debug\QUANLY_TTB.exe.config
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\bin\Debug\QUANLY_TTB.exe
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\bin\Debug\QUANLY_TTB.pdb
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.csproj.AssemblyReference.cache
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.Form1.resources
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.FormThemMoi.resources
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.FormDanhSach.resources
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.FormTimKiem.resources
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.FormThongKe.resources
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.Properties.Resources.resources
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.csproj.GenerateResource.cache
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.csproj.CoreCompileInputs.cache
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.exe
+D:\CÁ NHÂN\deskop\TTNT\Nuber 2\KÌ 2\Dự Án KTLT_TTNT\QUANLY_TTB\obj\Debug\QUANLY_TTB.pdb

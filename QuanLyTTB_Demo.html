@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản lý Trang Thiết Bị — K60 KTLT</title>
+<style>
+  :root {
+    --od: #3d5c3a;
+    --od-dark: #2b4229;
+    --od-mid: #4e7349;
+    --od-light: #c8d9c5;
+    --od-pale: #eef3ed;
+    --od-text: #1e3019;
+    --od-muted: #5a7356;
+    --od-accent: #8fba88;
+    --od-stripe: #dce8da;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+  body { background: #b5c4b2; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 24px; }
+  .app { background: #d6ddd5; border: 1px solid #9aaa97; border-radius: 4px; overflow: hidden; font-size: 13px; user-select: none; width: 900px; max-width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+  .titlebar { background: var(--od-dark); color: #cde0ca; padding: 7px 12px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 500; }
+  .titlebar .wbtns { display: flex; gap: 6px; }
+  .titlebar .wbtns span { width: 13px; height: 13px; border-radius: 50%; display: inline-block; cursor: pointer; }
+  .titlebar .wbtns span:nth-child(1) { background: #ff5f57; }
+  .titlebar .wbtns span:nth-child(2) { background: #febc2e; }
+  .titlebar .wbtns span:nth-child(3) { background: #28c840; }
+  .menubar { background: var(--od); color: #d8e8d5; display: flex; gap: 2px; padding: 0 6px; font-size: 12px; }
+  .menubar span { padding: 5px 12px; cursor: pointer; border-radius: 2px; }
+  .menubar span:hover { background: var(--od-mid); }
+  .toolbar { background: var(--od-light); border-bottom: 1px solid #9aaa97; padding: 5px 10px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .tbtn { background: var(--od-pale); border: 1px solid #9aaa97; border-radius: 3px; padding: 4px 12px; cursor: pointer; font-size: 12px; color: var(--od-text); display: inline-flex; align-items: center; gap: 5px; font-family: inherit; }
+  .tbtn:hover { background: var(--od-stripe); border-color: var(--od-mid); }
+  .tbtn.primary { background: var(--od); color: #eef3ed; border-color: var(--od-dark); }
+  .tbtn.primary:hover { background: var(--od-mid); }
+  .body { display: flex; }
+  .sidebar { width: 140px; background: var(--od-pale); border-right: 1px solid #9aaa97; min-height: 460px; flex-shrink: 0; }
+  .sidebar .menu-item { padding: 9px 14px; cursor: pointer; font-size: 12px; color: var(--od-text); display: flex; align-items: center; gap: 8px; border-left: 3px solid transparent; }
+  .sidebar .menu-item:hover { background: var(--od-light); }
+  .sidebar .menu-item.active { background: var(--od-light); border-left-color: var(--od-dark); color: var(--od-dark); font-weight: 600; }
+  .main { flex: 1; background: #eaeee9; min-width: 0; }
+  .panel { display: none; padding: 16px; }
+  .panel.active { display: block; }
+  .section-title { font-size: 13px; font-weight: 600; color: var(--od-dark); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid var(--od-light); display: flex; align-items: center; gap: 6px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 3px; }
+  .form-group label { font-size: 11px; color: var(--od-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+  .form-group input, .form-group select { background: white; border: 1px solid #9aaa97; border-radius: 3px; padding: 5px 8px; font-size: 12px; color: var(--od-text); outline: none; font-family: inherit; }
+  .form-group input:focus, .form-group select:focus { border-color: var(--od-mid); box-shadow: 0 0 0 2px rgba(78,115,73,0.2); }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-actions { display: flex; gap: 8px; margin-top: 14px; justify-content: flex-end; }
+  .datagrid { background: white; border: 1px solid #9aaa97; border-radius: 3px; overflow: hidden; }
+  .datagrid table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .datagrid th { background: var(--od); color: #d8e8d5; padding: 7px 10px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .datagrid td { padding: 6px 10px; border-bottom: 1px solid var(--od-stripe); color: var(--od-text); }
+  .datagrid tr:nth-child(even) td { background: var(--od-pale); }
+  .datagrid tr:hover td { background: var(--od-light); cursor: pointer; }
+  .datagrid tr.selected td { background: var(--od-light); font-weight: 500; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+  .badge.cap1 { background: #c8d9c5; color: #2b4229; }
+  .badge.cap2 { background: #8fba88; color: #1e3019; }
+  .badge.cap3 { background: var(--od); color: #eef3ed; }
+  .sort-row { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  .sort-row label { font-size: 12px; color: var(--od-muted); font-weight: 500; }
+  .sort-row select { background: white; border: 1px solid #9aaa97; border-radius: 3px; padding: 4px 8px; font-size: 12px; color: var(--od-text); font-family: inherit; }
+  .stat-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+  .stat-card { background: var(--od-pale); border: 1px solid #9aaa97; border-radius: 4px; padding: 12px 14px; }
+  .stat-card .num { font-size: 26px; font-weight: 700; color: var(--od-dark); }
+  .stat-card .lbl { font-size: 11px; color: var(--od-muted); margin-top: 3px; }
+  .stat-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; font-size: 12px; color: var(--od-text); }
+  .stat-bar-row .bar-bg { flex: 1; background: var(--od-light); border-radius: 3px; height: 16px; overflow: hidden; }
+  .stat-bar-row .bar-fill { height: 100%; background: var(--od); border-radius: 3px; display: flex; align-items: center; padding-left: 6px; transition: width 0.4s ease; }
+  .stat-bar-row .bar-fill span { font-size: 10px; color: #d8e8d5; font-weight: 600; }
+  .stat-bar-row .name { width: 140px; font-size: 11px; }
+  .stat-bar-row .count { width: 32px; text-align: right; color: var(--od-muted); font-weight: 600; }
+  .search-row { display: flex; gap: 6px; margin-bottom: 10px; align-items: center; }
+  .search-row input { flex: 1; background: white; border: 1px solid #9aaa97; border-radius: 3px; padding: 5px 9px; font-size: 12px; font-family: inherit; outline: none; }
+  .search-row input:focus { border-color: var(--od-mid); }
+  .search-row select { background: white; border: 1px solid #9aaa97; border-radius: 3px; padding: 4px 8px; font-size: 12px; font-family: inherit; }
+  .result-msg { font-size: 12px; padding: 7px 12px; margin-bottom: 8px; }
+  .result-msg.found { background: #c8d9c5; color: #1e3019; border-left: 3px solid var(--od-dark); }
+  .result-msg.notfound { background: #f9e8e8; color: #7a1a1a; border-left: 3px solid #c04040; }
+  .statusbar { background: var(--od-dark); color: #9ab894; padding: 4px 12px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
+  .tab-nav { display: flex; margin-bottom: 0; }
+  .tab-btn { padding: 5px 16px; font-size: 12px; cursor: pointer; background: var(--od-light); color: var(--od-muted); border: 1px solid #9aaa97; border-bottom: none; margin-right: 2px; border-radius: 3px 3px 0 0; font-family: inherit; }
+  .tab-btn.active { background: white; color: var(--od-dark); font-weight: 600; }
+  .tab-content { background: white; border: 1px solid #9aaa97; border-radius: 0 3px 3px 3px; padding: 12px; }
+  .sep { border-top: 1px solid #9aaa97; margin: 8px 0; }
+  .note-box { background: #fef9e7; border-left: 3px solid #d4ac0d; padding: 8px 12px; font-size: 11px; color: #6e5a00; margin-top: 8px; border-radius: 0 3px 3px 0; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Title Bar -->
+  <div class="titlebar">
+    <div style="display:flex;align-items:center;gap:8px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cde0ca" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Quản lý Trang Thiết Bị — Thực tập Kỹ thuật Lập trình K60
+    </div>
+    <div class="wbtns"><span title="Đóng"></span><span title="Thu nhỏ"></span><span title="Phóng to"></span></div>
+  </div>
+
+  <!-- Menu Bar -->
+  <div class="menubar">
+    <span>Tệp</span><span>Chỉnh sửa</span><span>Xem</span><span>Công cụ</span><span>Trợ giúp</span>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="tbtn primary" onclick="showPanel('them');setActive(0)">➕ Thêm mới (M1)</button>
+    <button class="tbtn" onclick="showPanel('ds');setActive(1)">📋 Danh sách (M2)</button>
+    <button class="tbtn" onclick="showPanel('sx');setActive(2)">🔃 Sắp xếp (M3)</button>
+    <button class="tbtn" onclick="showPanel('tk');setActive(3)">🔍 Tìm kiếm (M4)</button>
+    <button class="tbtn" onclick="showPanel('bc');setActive(4)">📊 Thống kê (M5)</button>
+    <span style="flex:1"></span>
+    <button class="tbtn" style="color:#7a1a1a;border-color:#c04040" onclick="showPanel('thoat');setActive(5)">🚪 Thoát (M6)</button>
+  </div>
+
+  <div class="body">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="menu-item active" onclick="showPanel('them');setActive(0)">➕ Thêm mới</div>
+      <div class="menu-item" onclick="showPanel('ds');setActive(1)">📋 Danh sách</div>
+      <div class="menu-item" onclick="showPanel('sx');setActive(2)">🔃 Sắp xếp</div>
+      <div class="menu-item" onclick="showPanel('tk');setActive(3)">🔍 Tìm kiếm</div>
+      <div class="menu-item" onclick="showPanel('bc');setActive(4)">📊 Thống kê</div>
+      <div class="sep"></div>
+      <div class="menu-item" onclick="showPanel('thoat');setActive(5)" style="color:#8a2a2a">🚪 Thoát</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+
+      <!-- M1: Thêm mới -->
+      <div class="panel active" id="panel-them">
+        <div class="section-title">➕ M1 — Thêm mới hồ sơ trang thiết bị</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Mã trang thiết bị *</label>
+            <input type="text" id="f-ma" placeholder="VD: TTB-006" />
+          </div>
+          <div class="form-group">
+            <label>Số hiệu TTB *</label>
+            <input type="text" id="f-sohieu" placeholder="VD: SH-2024-006" />
+          </div>
+          <div class="form-group full">
+            <label>Tên trang thiết bị *</label>
+            <input type="text" id="f-ten" placeholder="Nhập tên đầy đủ của thiết bị..." />
+          </div>
+          <div class="form-group">
+            <label>Ngày sản xuất</label>
+            <input type="date" id="f-nsx" value="2024-01-01" />
+          </div>
+          <div class="form-group">
+            <label>Ngày đưa vào sử dụng</label>
+            <input type="date" id="f-nsd" value="2024-06-01" />
+          </div>
+          <div class="form-group">
+            <label>Nguồn cấp</label>
+            <input type="text" id="f-nguon" placeholder="VD: Bộ Quốc phòng" />
+          </div>
+          <div class="form-group">
+            <label>Số lượng *</label>
+            <input type="number" id="f-sl" min="1" value="1" />
+          </div>
+          <div class="form-group">
+            <label>Chủng loại</label>
+            <select id="f-loai">
+              <option value="">-- Chọn chủng loại --</option>
+              <option>Thông tin liên lạc</option>
+              <option>Vũ khí bộ binh</option>
+              <option>Quân trang</option>
+              <option>Phương tiện cơ giới</option>
+              <option>Hậu cần kỹ thuật</option>
+              <option>Trang bị bảo hộ</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Cấp (1–5)</label>
+            <select id="f-cap">
+              <option value="1">1 — Cấp chiến lược</option>
+              <option value="2">2 — Cấp chiến dịch</option>
+              <option value="3" selected>3 — Cấp chiến thuật</option>
+              <option value="4">4 — Cấp đơn vị</option>
+              <option value="5">5 — Cấp cá nhân</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ghi chú</label>
+            <input type="text" id="f-ghichu" placeholder="Không bắt buộc..." />
+          </div>
+          <div class="form-actions full">
+            <button class="tbtn" onclick="resetForm()">↩ Nhập lại</button>
+            <button class="tbtn" onclick="showPanel('ds');setActive(1)">✕ Hủy</button>
+            <button class="tbtn primary" onclick="saveRecord()">💾 Lưu hồ sơ</button>
+          </div>
+        </div>
+        <div id="save-msg" style="display:none;margin-top:10px" class="result-msg found"></div>
+        <div class="note-box">⚠ Các trường đánh dấu (*) là bắt buộc. Dữ liệu sẽ được ghi vào file <code>data.txt</code> sau khi lưu.</div>
+      </div>
+
+      <!-- M2: Danh sách -->
+      <div class="panel" id="panel-ds">
+        <div class="section-title">📋 M2 — Danh sách trang thiết bị</div>
+        <div style="display:flex;gap:6px;margin-bottom:10px;align-items:center;flex-wrap:wrap">
+          <input type="text" id="filter-input" placeholder="Lọc nhanh..." oninput="filterTable()" style="background:white;border:1px solid #9aaa97;border-radius:3px;padding:4px 9px;font-size:12px;width:180px;outline:none">
+          <span id="record-count" style="font-size:11px;color:var(--od-muted);margin-left:auto">5 bản ghi</span>
+          <button class="tbtn" onclick="printTable()">🖨 In danh sách</button>
+        </div>
+        <div class="datagrid">
+          <table id="main-tbl">
+            <thead><tr>
+              <th>#</th><th>Mã TTB</th><th>Tên trang thiết bị</th><th>Chủng loại</th><th>Số lượng</th><th>Cấp</th><th>Ngày sử dụng</th>
+            </tr></thead>
+            <tbody id="main-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- M3: Sắp xếp -->
+      <div class="panel" id="panel-sx">
+        <div class="section-title">🔃 M3 — Sắp xếp danh sách</div>
+        <div class="sort-row">
+          <label>Thuật toán:</label>
+          <select id="algo">
+            <option value="selection">Selection Sort</option>
+            <option value="insertion">Insertion Sort</option>
+            <option value="bubble">Bubble Sort</option>
+            <option value="quick" selected>Quick Sort</option>
+          </select>
+          <label>Khóa sắp xếp:</label>
+          <select id="sort-key">
+            <option value="ten">Tên TTB</option>
+            <option value="ngay">Ngày sản xuất</option>
+            <option value="loai" selected>Chủng loại</option>
+            <option value="sl">Số lượng</option>
+            <option value="cap">Cấp</option>
+          </select>
+          <label>Thứ tự:</label>
+          <select id="sort-dir">
+            <option value="asc">Tăng dần ↑</option>
+            <option value="desc">Giảm dần ↓</option>
+          </select>
+          <button class="tbtn primary" onclick="doSort()">▶ Sắp xếp</button>
+        </div>
+        <div id="sort-msg" style="display:none;margin-bottom:8px" class="result-msg found"></div>
+        <div class="datagrid">
+          <table>
+            <thead><tr><th>#</th><th>Mã TTB</th><th>Tên trang thiết bị</th><th>Chủng loại</th><th>Số lượng</th><th>Cấp</th></tr></thead>
+            <tbody id="sort-body"></tbody>
+          </table>
+        </div>
+        <div id="sort-info" style="font-size:11px;color:var(--od-muted);margin-top:6px">Chọn thuật toán và nhấn Sắp xếp để thực hiện.</div>
+        <div class="note-box">💡 Tìm kiếm nhị phân (M4) chỉ hoạt động sau khi đã sắp xếp. Tập chỉ mục sẽ được lưu vào <code>index.txt</code>.</div>
+      </div>
+
+      <!-- M4: Tìm kiếm -->
+      <div class="panel" id="panel-tk">
+        <div class="section-title">🔍 M4 — Tìm kiếm trang thiết bị</div>
+        <div class="search-row">
+          <select id="search-type">
+            <option value="linear">Tìm kiếm tuần tự</option>
+            <option value="binary">Tìm kiếm nhị phân (đã sắp xếp)</option>
+            <option value="bst">BST — Cây nhị phân tìm kiếm</option>
+          </select>
+          <select id="search-key">
+            <option value="ten">Tên TTB</option>
+            <option value="ma">Mã TTB</option>
+            <option value="loai">Chủng loại</option>
+            <option value="cap">Cấp</option>
+          </select>
+          <input type="text" id="search-q" placeholder="Nhập từ khóa tìm kiếm..." />
+          <button class="tbtn primary" onclick="doSearch()">🔍 Tìm</button>
+          <button class="tbtn" onclick="clearSearch()">✕ Xóa</button>
+        </div>
+        <div id="search-msg" style="display:none;margin-bottom:8px" class="result-msg"></div>
+        <div class="datagrid">
+          <table>
+            <thead><tr><th>#</th><th>Mã TTB</th><th>Tên trang thiết bị</th><th>Chủng loại</th><th>Số lượng</th><th>Cấp</th></tr></thead>
+            <tbody id="search-body">
+              <tr><td colspan="6" style="text-align:center;color:var(--od-muted);padding:20px">Nhập từ khóa và nhấn Tìm để bắt đầu</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- M5: Thống kê -->
+      <div class="panel" id="panel-bc">
+        <div class="section-title">📊 M5 — Thống kê báo cáo</div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="num" id="stat-total">858</div><div class="lbl">📦 Tổng số lượng TTB</div></div>
+          <div class="stat-card"><div class="num" id="stat-types">5</div><div class="lbl">🗂 Số chủng loại</div></div>
+          <div class="stat-card"><div class="num" id="stat-records">5</div><div class="lbl">📄 Số hồ sơ</div></div>
+        </div>
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab(this,'tab-cl')">Theo chủng loại</button>
+          <button class="tab-btn" onclick="switchTab(this,'tab-cap')">Theo cấp</button>
+        </div>
+        <div class="tab-content" id="tab-cl">
+          <div style="font-size:11px;color:var(--od-muted);margin-bottom:10px">Phân bổ số lượng trang thiết bị theo chủng loại</div>
+          <div id="chart-loai"></div>
+        </div>
+        <div class="tab-content" id="tab-cap" style="display:none">
+          <div style="font-size:11px;color:var(--od-muted);margin-bottom:10px">Phân bổ số lượng trang thiết bị theo cấp quản lý</div>
+          <div id="chart-cap"></div>
+        </div>
+      </div>
+
+      <!-- M6: Thoát -->
+      <div class="panel" id="panel-thoat">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:340px;gap:18px;text-align:center">
+          <div style="font-size:48px">🚪</div>
+          <div style="font-size:16px;font-weight:600;color:var(--od-dark)">Xác nhận thoát chương trình</div>
+          <div style="font-size:13px;color:var(--od-muted);max-width:320px">Hãy đảm bảo đã lưu toàn bộ dữ liệu vào file trước khi thoát chương trình.</div>
+          <div style="display:flex;gap:12px;margin-top:8px">
+            <button class="tbtn" onclick="showPanel('ds');setActive(1)">← Quay lại</button>
+            <button class="tbtn primary" style="background:#7a1a1a;border-color:#5a0e0e;color:#fff" onclick="alert('Cảm ơn! Chương trình sẽ đóng.')">⏻ Xác nhận thoát</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Status Bar -->
+  <div class="statusbar">
+    <span id="status-left">✔ Sẵn sàng — dữ liệu đã tải</span>
+    <span>Thực tập KTLT · K60 · <span id="clock"></span></span>
+  </div>
+</div>
+
+<script>
+  const allData = [
+    {ma:'TTB-001',sohieu:'SH-001',ten:'Súng trường AK-47',loai:'Vũ khí bộ binh',sl:120,cap:3,nsx:'2019-01-15',nsd:'2019-03-01',nguon:'Bộ Quốc phòng'},
+    {ma:'TTB-002',sohieu:'SH-002',ten:'Máy thông tin PRC-25',loai:'Thông tin liên lạc',sl:30,cap:2,nsx:'2021-05-10',nsd:'2021-07-15',nguon:'Quân khu 1'},
+    {ma:'TTB-003',sohieu:'SH-003',ten:'Ba lô quân sự 65L',loai:'Quân trang',sl:200,cap:3,nsx:'2021-11-20',nsd:'2022-01-20',nguon:'Cục Hậu cần'},
+    {ma:'TTB-004',sohieu:'SH-004',ten:'Xe tải quân sự GAZ',loai:'Phương tiện cơ giới',sl:8,cap:1,nsx:'2020-08-01',nsd:'2020-11-05',nguon:'Bộ Quốc phòng'},
+    {ma:'TTB-005',sohieu:'SH-005',ten:'Lương khô dã chiến',loai:'Hậu cần kỹ thuật',sl:500,cap:3,nsx:'2023-12-01',nsd:'2024-02-28',nguon:'Cục Hậu cần'},
+  ];
+
+  let sortedData = [...allData];
+  let isSorted = false;
+
+  function renderTable(data, tbodyId, showIdx=true) {
+    const b = document.getElementById(tbodyId);
+    if (!data.length) {
+      b.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--od-muted);padding:18px">Không có dữ liệu</td></tr>';
+      return;
+    }
+    b.innerHTML = data.map((d,i) => `<tr>
+      <td>${showIdx?i+1:''}</td><td>${d.ma}</td><td>${d.ten}</td><td>${d.loai}</td>
+      <td>${d.sl}</td><td><span class="badge cap${d.cap<=1?1:d.cap<=2?2:3}">Cấp ${d.cap}</span></td>
+      ${tbodyId==='main-body'?`<td>${d.nsd}</td>`:''}
+    </tr>`).join('');
+  }
+
+  function filterTable() {
+    const q = document.getElementById('filter-input').value.toLowerCase();
+    const filtered = allData.filter(d =>
+      d.ma.toLowerCase().includes(q) || d.ten.toLowerCase().includes(q) || d.loai.toLowerCase().includes(q)
+    );
+    document.getElementById('record-count').textContent = filtered.length + ' bản ghi';
+    renderTableFull(filtered, 'main-body');
+  }
+
+  function renderTableFull(data, tbodyId) {
+    const b = document.getElementById(tbodyId);
+    b.innerHTML = data.map((d,i) => `<tr>
+      <td>${i+1}</td><td>${d.ma}</td><td>${d.ten}</td><td>${d.loai}</td>
+      <td>${d.sl}</td><td><span class="badge cap${d.cap<=1?1:d.cap<=2?2:3}">Cấp ${d.cap}</span></td>
+      <td>${d.nsd}</td>
+    </tr>`).join('');
+  }
+
+  function showPanel(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-'+id).classList.add('active');
+    setStatus('Đang xem: ' + {them:'Thêm mới (M1)',ds:'Danh sách (M2)',sx:'Sắp xếp (M3)',tk:'Tìm kiếm (M4)',bc:'Thống kê (M5)',thoat:'Thoát (M6)'}[id]);
+    if (id==='ds') renderTableFull(allData,'main-body');
+    if (id==='sx') { sortedData=[...allData]; renderSortTable(); }
+    if (id==='bc') renderCharts();
+  }
+
+  function setActive(idx) {
+    document.querySelectorAll('.sidebar .menu-item').forEach((m,i)=>m.classList.toggle('active',i===idx));
+  }
+
+  function setStatus(msg) {
+    document.getElementById('status-left').textContent = '✔ ' + msg;
+  }
+
+  function saveRecord() {
+    const ma = document.getElementById('f-ma').value.trim();
+    const ten = document.getElementById('f-ten').value.trim();
+    const sl = document.getElementById('f-sl').value;
+    if (!ma || !ten || !sl) {
+      const m = document.getElementById('save-msg');
+      m.className='result-msg notfound'; m.style.display='block';
+      m.textContent='⚠ Vui lòng nhập đầy đủ các trường bắt buộc (*)';
+      return;
+    }
+    const newRec = {
+      ma, sohieu: document.getElementById('f-sohieu').value,
+      ten, loai: document.getElementById('f-loai').value||'Chưa phân loại',
+      sl: parseInt(sl), cap: parseInt(document.getElementById('f-cap').value),
+      nsx: document.getElementById('f-nsx').value, nsd: document.getElementById('f-nsd').value,
+      nguon: document.getElementById('f-nguon').value
+    };
+    allData.push(newRec);
+    const m = document.getElementById('save-msg');
+    m.className='result-msg found'; m.style.display='block';
+    m.innerHTML='✔ Đã lưu hồ sơ <b>'+ma+'</b> — '+ten+' vào file dữ liệu!';
+    setStatus('Đã thêm hồ sơ: ' + ma);
+    setTimeout(()=>m.style.display='none',3500);
+  }
+
+  function resetForm() {
+    ['f-ma','f-sohieu','f-ten','f-nguon','f-ghichu'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('f-sl').value=1;
+    document.getElementById('save-msg').style.display='none';
+  }
+
+  function doSort() {
+    const key = document.getElementById('sort-key').value;
+    const algo = document.getElementById('algo').value;
+    const dir = document.getElementById('sort-dir').value;
+    sortedData = [...allData];
+    const cmp = (a,b) => {
+      let va=a[key], vb=b[key];
+      if (typeof va==='string') return dir==='asc'?va.localeCompare(vb):vb.localeCompare(va);
+      return dir==='asc'?va-vb:vb-va;
+    };
+    if (algo==='bubble') {
+      for(let i=0;i<sortedData.length;i++) for(let j=0;j<sortedData.length-i-1;j++) if(cmp(sortedData[j],sortedData[j+1])>0){let t=sortedData[j];sortedData[j]=sortedData[j+1];sortedData[j+1]=t;}
+    } else if (algo==='selection') {
+      for(let i=0;i<sortedData.length;i++){let m=i;for(let j=i+1;j<sortedData.length;j++)if(cmp(sortedData[j],sortedData[m])<0)m=j;let t=sortedData[i];sortedData[i]=sortedData[m];sortedData[m]=t;}
+    } else if (algo==='insertion') {
+      for(let i=1;i<sortedData.length;i++){let k=sortedData[i],j=i-1;while(j>=0&&cmp(sortedData[j],k)>0){sortedData[j+1]=sortedData[j];j--;}sortedData[j+1]=k;}
+    } else {
+      sortedData.sort(cmp);
+    }
+    isSorted = true;
+    renderSortTable();
+    const names = {selection:'Selection Sort',insertion:'Insertion Sort',bubble:'Bubble Sort',quick:'Quick Sort'};
+    const keys = {ten:'Tên TTB',ngay:'Ngày sản xuất',loai:'Chủng loại',sl:'Số lượng',cap:'Cấp'};
+    const m = document.getElementById('sort-msg');
+    m.style.display='block';
+    m.innerHTML='✔ Đã sắp xếp bằng <b>'+names[algo]+'</b> theo khóa <b>'+keys[key]+'</b> ('+(dir==='asc'?'tăng dần ↑':'giảm dần ↓')+')';
+    document.getElementById('sort-info').textContent = names[algo]+' · n='+sortedData.length+' phần tử · Trạng thái: đã sắp xếp ✔';
+    setStatus('Đã sắp xếp bằng '+names[algo]);
+  }
+
+  function renderSortTable() {
+    const b = document.getElementById('sort-body');
+    b.innerHTML = sortedData.map((d,i)=>`<tr>
+      <td>${i+1}</td><td>${d.ma}</td><td>${d.ten}</td><td>${d.loai}</td>
+      <td>${d.sl}</td><td><span class="badge cap${d.cap<=1?1:d.cap<=2?2:3}">Cấp ${d.cap}</span></td>
+    </tr>`).join('');
+  }
+
+  function doSearch() {
+    const q = document.getElementById('search-q').value.trim().toLowerCase();
+    const key = document.getElementById('search-key').value;
+    const type = document.getElementById('search-type').value;
+    const msg = document.getElementById('search-msg');
+    if (!q) { msg.className='result-msg notfound'; msg.style.display='block'; msg.textContent='⚠ Vui lòng nhập từ khóa tìm kiếm.'; return; }
+    const pool = (type==='binary'||type==='bst') ? sortedData : allData;
+    const res = pool.filter(d => String(d[key]).toLowerCase().includes(q));
+    msg.style.display='block';
+    const typeNames = {linear:'Tìm kiếm tuần tự',binary:'Tìm kiếm nhị phân',bst:'BST'};
+    if (res.length) {
+      msg.className='result-msg found';
+      msg.innerHTML='✔ <b>'+typeNames[type]+'</b>: tìm thấy <b>'+res.length+'</b> kết quả cho "'+q+'"';
+      document.getElementById('search-body').innerHTML = res.map((d,i)=>`<tr>
+        <td>${i+1}</td><td>${d.ma}</td><td>${d.ten}</td><td>${d.loai}</td>
+        <td>${d.sl}</td><td><span class="badge cap${d.cap<=1?1:d.cap<=2?2:3}">Cấp ${d.cap}</span></td>
+      </tr>`).join('');
+      setStatus('Tìm thấy '+res.length+' kết quả');
+    } else {
+      msg.className='result-msg notfound';
+      msg.innerHTML='✕ Không tìm thấy kết quả cho "'+q+'"';
+      document.getElementById('search-body').innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--od-muted);padding:18px">Không có kết quả phù hợp</td></tr>';
+      setStatus('Không tìm thấy kết quả');
+    }
+  }
+
+  function clearSearch() {
+    document.getElementById('search-q').value='';
+    document.getElementById('search-msg').style.display='none';
+    document.getElementById('search-body').innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--od-muted);padding:20px">Nhập từ khóa và nhấn Tìm để bắt đầu</td></tr>';
+  }
+
+  function renderCharts() {
+    const loaiMap={}, capMap={};
+    let total=0;
+    allData.forEach(d=>{
+      loaiMap[d.loai]=(loaiMap[d.loai]||0)+d.sl;
+      capMap['Cấp '+d.cap]=(capMap['Cấp '+d.cap]||0)+d.sl;
+      total+=d.sl;
+    });
+    document.getElementById('stat-total').textContent=total;
+    document.getElementById('stat-types').textContent=Object.keys(loaiMap).length;
+    document.getElementById('stat-records').textContent=allData.length;
+    const maxL=Math.max(...Object.values(loaiMap));
+    document.getElementById('chart-loai').innerHTML=Object.entries(loaiMap).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`
+      <div class="stat-bar-row">
+        <span class="name">${k}</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${Math.round(v/maxL*100)}%"><span>${v}</span></div></div>
+        <span class="count">${v}</span>
+      </div>`).join('');
+    const maxC=Math.max(...Object.values(capMap));
+    document.getElementById('chart-cap').innerHTML=Object.entries(capMap).sort((a,b)=>a[0].localeCompare(b[0])).map(([k,v])=>`
+      <div class="stat-bar-row">
+        <span class="name">${k}</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${Math.round(v/maxC*100)}%"><span>${v}</span></div></div>
+        <span class="count">${v}</span>
+      </div>`).join('');
+  }
+
+  function switchTab(el, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('tab-cl').style.display='none';
+    document.getElementById('tab-cap').style.display='none';
+    document.getElementById(tabId).style.display='block';
+  }
+
+  function printTable() {
+    window.print();
+  }
+
+  function updateClock() {
+    document.getElementById('clock').textContent = new Date().toLocaleTimeString('vi-VN');
+  }
+
+  renderTableFull(allData,'main-body');
+  renderSortTable();
+  renderCharts();
+  updateClock();
+  setInterval(updateClock,1000);
+</script>
+</body>
+</html>

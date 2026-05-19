@@ -1,0 +1,10 @@
+TTB001|SH2024-001|Súng trường AK-47|15/01/2019|01/03/2019|Bộ Quốc phòng|120|Vũ khí bộ binh|3|Hàng tồn kho dự phòng
+TTB002|SH2024-002|Máy thông tin PRC-25|10/05/2021|15/07/2021|Quân khu 1|30|Thông tin liên lạc|2|Thiết bị mới bảo dưỡng
+TTB003|SH2024-003|Ba lô quân sự 65L|20/11/2021|20/01/2022|Cục Hậu cần|200|Quân trang|3|Cấp cho tân binh
+TTB004|SH2024-004|Xe tải quân sự GAZ-66|01/08/2020|05/11/2020|Bộ Quốc phòng|8|Phương tiện cơ giới|1|Xe vận tải chiến dịch
+TTB005|SH2024-005|Lương khô dã chiến A1|01/12/2023|28/02/2024|Cục Hậu cần|500|Hậu cần kỹ thuật|3|Hạn sử dụng 12 tháng
+TTB006|SH2024-006|Máy vô điện 15W|12/03/2022|01/05/2022|Quân khu 2|15|Thông tin liên lạc|3|Đang hoạt động tốt
+TTB007|SH2024-007|Mặt nạ phòng độc MV-5|05/06/2021|10/08/2021|Bộ Quốc phòng|150|Trang bị bảo hộ|2|Kiểm tra định kỳ hàng năm
+TTB008|SH2024-008|Súng ngắn K-54|10/10/2018|01/01/2019|Bộ Quốc phòng|45|Vũ khí bộ binh|3|Súng trang bị cho sĩ quan
+TTB009|SH2024-009|Áo giáp chống đạn K-20|20/02/2022|15/04/2022|Cục Hậu cần|60|Trang bị bảo hộ|2|Vật liệu siêu bền
+TTB010|SH2024-010|Xe Jeep chỉ huy|15/07/2019|20/09/2019|Quân khu 3|4|Phương tiện cơ giới|1|Phục vụ công tác chỉ huy
