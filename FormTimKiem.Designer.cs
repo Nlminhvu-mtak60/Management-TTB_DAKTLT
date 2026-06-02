@@ -173,8 +173,7 @@ namespace QUANLY_TTB
             this.cboSearchKey.FormattingEnabled = true;
             this.cboSearchKey.Items.AddRange(new object[] {
             "Mã TTB",
-            "Tên trang thiết bị",
-            "Chủng loại"});
+            "Tên"});
             this.cboSearchKey.Location = new System.Drawing.Point(190, 51);
             this.cboSearchKey.Name = "cboSearchKey";
             this.cboSearchKey.Size = new System.Drawing.Size(180, 28);

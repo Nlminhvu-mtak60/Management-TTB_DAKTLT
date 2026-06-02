@@ -20,6 +20,8 @@ namespace QUANLY_TTB
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelM2_DanhSach = new System.Windows.Forms.Panel();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.panelSort = new System.Windows.Forms.Panel();
             this.btnPerformSort = new System.Windows.Forms.Button();
             this.cboSortAlgorithm = new System.Windows.Forms.ComboBox();
@@ -29,10 +31,13 @@ namespace QUANLY_TTB
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
             this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoHieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNguonCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgaySX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgaySD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,6 +49,8 @@ namespace QUANLY_TTB
             // panelM2_DanhSach
             // 
             this.panelM2_DanhSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(238)))), ((int)(((byte)(233)))));
+            this.panelM2_DanhSach.Controls.Add(this.btnSua);
+            this.panelM2_DanhSach.Controls.Add(this.btnXoa);
             this.panelM2_DanhSach.Controls.Add(this.panelSort);
             this.panelM2_DanhSach.Controls.Add(this.lblRecordCount);
             this.panelM2_DanhSach.Controls.Add(this.dgvDanhSach);
@@ -53,6 +60,37 @@ namespace QUANLY_TTB
             this.panelM2_DanhSach.Name = "panelM2_DanhSach";
             this.panelM2_DanhSach.Size = new System.Drawing.Size(800, 548);
             this.panelM2_DanhSach.TabIndex = 1;
+            this.panelM2_DanhSach.Paint += new System.Windows.Forms.PaintEventHandler(this.panelM2_DanhSach_Paint_2);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(58)))));
+            this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSua.ForeColor = System.Drawing.Color.White;
+            this.btnSua.Location = new System.Drawing.Point(594, 510);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(90, 30);
+            this.btnSua.TabIndex = 4;
+            this.btnSua.Text = "✏ Sửa";
+            this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnXoa.ForeColor = System.Drawing.Color.White;
+            this.btnXoa.Location = new System.Drawing.Point(694, 510);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(90, 30);
+            this.btnXoa.TabIndex = 5;
+            this.btnXoa.Text = "🗑 Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // panelSort
             // 
@@ -74,7 +112,7 @@ namespace QUANLY_TTB
             this.btnPerformSort.ForeColor = System.Drawing.Color.White;
             this.btnPerformSort.Location = new System.Drawing.Point(375, 4);
             this.btnPerformSort.Name = "btnPerformSort";
-            this.btnPerformSort.Size = new System.Drawing.Size(80, 28);
+            this.btnPerformSort.Size = new System.Drawing.Size(85, 28);
             this.btnPerformSort.TabIndex = 3;
             this.btnPerformSort.Text = "Sắp xếp";
             this.btnPerformSort.UseVisualStyleBackColor = false;
@@ -89,7 +127,7 @@ namespace QUANLY_TTB
             "Sắp xếp Chọn",
             "Sắp xếp Chèn",
             "Sắp xếp Nổi bọt",
-            "Sắp xếp Nhanh"});
+            });
             this.cboSortAlgorithm.Location = new System.Drawing.Point(220, 5);
             this.cboSortAlgorithm.Name = "cboSortAlgorithm";
             this.cboSortAlgorithm.Size = new System.Drawing.Size(150, 27);
@@ -102,9 +140,7 @@ namespace QUANLY_TTB
             this.cboSortCriteria.FormattingEnabled = true;
             this.cboSortCriteria.Items.AddRange(new object[] {
             "Theo Mã TTB",
-            "Theo Tên",
-            "Theo Số lượng",
-            "Theo Chung Loại"});
+            "Theo Số lượng"});
             this.cboSortCriteria.Location = new System.Drawing.Point(80, 5);
             this.cboSortCriteria.Name = "cboSortCriteria";
             this.cboSortCriteria.Size = new System.Drawing.Size(130, 27);
@@ -155,10 +191,13 @@ namespace QUANLY_TTB
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSTT,
             this.colMa,
+            this.colSoHieu,
             this.colTen,
             this.colLoai,
+            this.colNguonCap,
             this.colSL,
             this.colCap,
+            this.colNgaySX,
             this.colNgaySD,
             this.colGhiChu});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -178,8 +217,9 @@ namespace QUANLY_TTB
             this.dgvDanhSach.RowHeadersWidth = 51;
             this.dgvDanhSach.RowTemplate.Height = 30;
             this.dgvDanhSach.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDanhSach.Size = new System.Drawing.Size(768, 480);
+            this.dgvDanhSach.Size = new System.Drawing.Size(768, 450);
             this.dgvDanhSach.TabIndex = 1;
+            this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
             // 
             // colSTT
             // 
@@ -196,6 +236,13 @@ namespace QUANLY_TTB
             this.colMa.Name = "colMa";
             this.colMa.ReadOnly = true;
             // 
+            // colSoHieu
+            // 
+            this.colSoHieu.HeaderText = "Số hiệu";
+            this.colSoHieu.MinimumWidth = 6;
+            this.colSoHieu.Name = "colSoHieu";
+            this.colSoHieu.ReadOnly = true;
+            // 
             // colTen
             // 
             this.colTen.FillWeight = 150F;
@@ -210,6 +257,13 @@ namespace QUANLY_TTB
             this.colLoai.MinimumWidth = 6;
             this.colLoai.Name = "colLoai";
             this.colLoai.ReadOnly = true;
+            // 
+            // colNguonCap
+            // 
+            this.colNguonCap.HeaderText = "Nguồn cấp";
+            this.colNguonCap.MinimumWidth = 6;
+            this.colNguonCap.Name = "colNguonCap";
+            this.colNguonCap.ReadOnly = true;
             // 
             // colSL
             // 
@@ -226,6 +280,13 @@ namespace QUANLY_TTB
             this.colCap.MinimumWidth = 6;
             this.colCap.Name = "colCap";
             this.colCap.ReadOnly = true;
+            // 
+            // colNgaySX
+            // 
+            this.colNgaySX.HeaderText = "Ngày SX";
+            this.colNgaySX.MinimumWidth = 6;
+            this.colNgaySX.Name = "colNgaySX";
+            this.colNgaySX.ReadOnly = true;
             // 
             // colNgaySD
             // 
@@ -280,10 +341,13 @@ namespace QUANLY_TTB
         private System.Windows.Forms.Label lblRecordCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSoHieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNguonCap;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSL;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySX;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGhiChu;
         private System.Windows.Forms.Panel panelSort;
@@ -291,5 +355,7 @@ namespace QUANLY_TTB
         private System.Windows.Forms.ComboBox cboSortCriteria;
         private System.Windows.Forms.ComboBox cboSortAlgorithm;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

@@ -109,7 +109,7 @@ namespace QUANLY_TTB
             this.lblStatRecords.Name = "lblStatRecords";
             this.lblStatRecords.Size = new System.Drawing.Size(24, 28);
             this.lblStatRecords.TabIndex = 3;
-            this.lblStatRecords.Text = "0";
+            this.lblStatRecords.Text = "—";
             // 
             // lblStatTypes
             // 
@@ -120,7 +120,7 @@ namespace QUANLY_TTB
             this.lblStatTypes.Name = "lblStatTypes";
             this.lblStatTypes.Size = new System.Drawing.Size(24, 28);
             this.lblStatTypes.TabIndex = 2;
-            this.lblStatTypes.Text = "0";
+            this.lblStatTypes.Text = "—";
             // 
             // lblStatTotal
             // 
@@ -131,7 +131,7 @@ namespace QUANLY_TTB
             this.lblStatTotal.Name = "lblStatTotal";
             this.lblStatTotal.Size = new System.Drawing.Size(24, 28);
             this.lblStatTotal.TabIndex = 1;
-            this.lblStatTotal.Text = "0";
+            this.lblStatTotal.Text = "—";
             // 
             // label21
             // 

@@ -16,24 +16,24 @@ namespace QUANLY_TTB
         private void Form1_Load(object sender, EventArgs e)
         {
             DataStore.LoadData();
-            // Mở form Thêm mới khi khởi động
             OpenChildForm(new FormThemMoi());
         }
 
-        // Hàm mở form con vào panel chính
         private void OpenChildForm(Form childForm)
         {
             if (activeForm != null)
+            {
                 activeForm.Close();
+                activeForm.Dispose();
+            }
 
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            
+
+            panelMain.Controls.Clear();
             panelMain.Controls.Add(childForm);
-            panelMain.Tag = childForm;
-            childForm.BringToFront();
             childForm.Show();
             
             lblStatusLeft.Text = "Đang xem: " + childForm.Text;

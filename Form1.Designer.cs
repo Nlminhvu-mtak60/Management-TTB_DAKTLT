@@ -17,8 +17,6 @@ namespace QUANLY_TTB
 
         private void InitializeComponent()
         {
-            this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.panelToolbar = new System.Windows.Forms.Panel();
             this.btnT_Thoat = new System.Windows.Forms.Button();
             this.btnT_ThongKe = new System.Windows.Forms.Button();
@@ -29,31 +27,10 @@ namespace QUANLY_TTB
             this.lblStatusRight = new System.Windows.Forms.Label();
             this.lblStatusLeft = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.panelTitleBar.SuspendLayout();
+            this.panelTitleBar = new System.Windows.Forms.Panel();
             this.panelToolbar.SuspendLayout();
             this.panelStatus.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelTitleBar
-            // 
-            this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(41)))));
-            this.panelTitleBar.Controls.Add(this.lblTitle);
-            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(950, 28);
-            this.panelTitleBar.TabIndex = 0;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(224)))), ((int)(((byte)(202)))));
-            this.lblTitle.Location = new System.Drawing.Point(10, 5);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(154, 20);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Quản lý Trang Thiết Bị";
             // 
             // panelToolbar
             // 
@@ -80,7 +57,7 @@ namespace QUANLY_TTB
             this.btnT_Thoat.Name = "btnT_Thoat";
             this.btnT_Thoat.Size = new System.Drawing.Size(100, 34);
             this.btnT_Thoat.TabIndex = 5;
-            this.btnT_Thoat.Text = "Thoát";
+            this.btnT_Thoat.Text = "🚪Thoát";
             this.btnT_Thoat.UseVisualStyleBackColor = false;
             this.btnT_Thoat.Click += new System.EventHandler(this.btnNav_Thoat_Click);
             // 
@@ -90,11 +67,11 @@ namespace QUANLY_TTB
             this.btnT_ThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnT_ThongKe.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnT_ThongKe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(41)))));
-            this.btnT_ThongKe.Location = new System.Drawing.Point(330, 8);
+            this.btnT_ThongKe.Location = new System.Drawing.Point(363, 8);
             this.btnT_ThongKe.Name = "btnT_ThongKe";
-            this.btnT_ThongKe.Size = new System.Drawing.Size(100, 34);
+            this.btnT_ThongKe.Size = new System.Drawing.Size(111, 34);
             this.btnT_ThongKe.TabIndex = 4;
-            this.btnT_ThongKe.Text = "Thống kê";
+            this.btnT_ThongKe.Text = "📊Thống kê";
             this.btnT_ThongKe.UseVisualStyleBackColor = false;
             this.btnT_ThongKe.Click += new System.EventHandler(this.btnNav_ThongKe_Click);
             // 
@@ -104,24 +81,25 @@ namespace QUANLY_TTB
             this.btnT_TimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnT_TimKiem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnT_TimKiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(41)))));
-            this.btnT_TimKiem.Location = new System.Drawing.Point(224, 8);
+            this.btnT_TimKiem.Location = new System.Drawing.Point(246, 8);
             this.btnT_TimKiem.Name = "btnT_TimKiem";
-            this.btnT_TimKiem.Size = new System.Drawing.Size(100, 34);
+            this.btnT_TimKiem.Size = new System.Drawing.Size(111, 34);
             this.btnT_TimKiem.TabIndex = 3;
-            this.btnT_TimKiem.Text = "Tìm kiếm";
+            this.btnT_TimKiem.Text = "🔍Tìm kiếm";
             this.btnT_TimKiem.UseVisualStyleBackColor = false;
             this.btnT_TimKiem.Click += new System.EventHandler(this.btnNav_TimKiem_Click);
+            // 
             // btnT_DanhSach
             // 
             this.btnT_DanhSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(243)))), ((int)(((byte)(237)))));
             this.btnT_DanhSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnT_DanhSach.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnT_DanhSach.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(41)))));
-            this.btnT_DanhSach.Location = new System.Drawing.Point(118, 8);
+            this.btnT_DanhSach.Location = new System.Drawing.Point(129, 8);
             this.btnT_DanhSach.Name = "btnT_DanhSach";
-            this.btnT_DanhSach.Size = new System.Drawing.Size(100, 34);
+            this.btnT_DanhSach.Size = new System.Drawing.Size(111, 34);
             this.btnT_DanhSach.TabIndex = 1;
-            this.btnT_DanhSach.Text = "Danh sách";
+            this.btnT_DanhSach.Text = "📋Danh sách";
             this.btnT_DanhSach.UseVisualStyleBackColor = false;
             this.btnT_DanhSach.Click += new System.EventHandler(this.btnNav_DanhSach_Click);
             // 
@@ -133,9 +111,9 @@ namespace QUANLY_TTB
             this.btnT_ThemMoi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(41)))));
             this.btnT_ThemMoi.Location = new System.Drawing.Point(12, 8);
             this.btnT_ThemMoi.Name = "btnT_ThemMoi";
-            this.btnT_ThemMoi.Size = new System.Drawing.Size(100, 34);
+            this.btnT_ThemMoi.Size = new System.Drawing.Size(111, 34);
             this.btnT_ThemMoi.TabIndex = 0;
-            this.btnT_ThemMoi.Text = "Thêm mới";
+            this.btnT_ThemMoi.Text = "➕Thêm mới";
             this.btnT_ThemMoi.UseVisualStyleBackColor = false;
             this.btnT_ThemMoi.Click += new System.EventHandler(this.btnNav_ThemMoi_Click);
             // 
@@ -183,6 +161,15 @@ namespace QUANLY_TTB
             this.panelMain.Size = new System.Drawing.Size(950, 535);
             this.panelMain.TabIndex = 4;
             // 
+            // panelTitleBar
+            // 
+            this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(41)))));
+            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.panelTitleBar.Name = "panelTitleBar";
+            this.panelTitleBar.Size = new System.Drawing.Size(950, 28);
+            this.panelTitleBar.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -199,8 +186,6 @@ namespace QUANLY_TTB
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý Trang Thiết Bị";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panelTitleBar.ResumeLayout(false);
-            this.panelTitleBar.PerformLayout();
             this.panelToolbar.ResumeLayout(false);
             this.panelStatus.ResumeLayout(false);
             this.panelStatus.PerformLayout();
@@ -209,9 +194,6 @@ namespace QUANLY_TTB
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelTitleBar;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panelToolbar;
         private System.Windows.Forms.Button btnT_Thoat;
         private System.Windows.Forms.Button btnT_ThongKe;
@@ -222,5 +204,6 @@ namespace QUANLY_TTB
         private System.Windows.Forms.Label lblStatusRight;
         private System.Windows.Forms.Label lblStatusLeft;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Panel panelTitleBar;
     }
 }
