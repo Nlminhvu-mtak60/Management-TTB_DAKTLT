@@ -23,6 +23,8 @@ namespace QUANLY_TTB
             this.btnT_TimKiem = new System.Windows.Forms.Button();
             this.btnT_DanhSach = new System.Windows.Forms.Button();
             this.btnT_ThemMoi = new System.Windows.Forms.Button();
+            this.btnT_Backup = new System.Windows.Forms.Button();
+            this.btnT_Import = new System.Windows.Forms.Button();
             this.panelStatus = new System.Windows.Forms.Panel();
             this.lblStatusRight = new System.Windows.Forms.Label();
             this.lblStatusLeft = new System.Windows.Forms.Label();
@@ -40,6 +42,8 @@ namespace QUANLY_TTB
             this.panelToolbar.Controls.Add(this.btnT_TimKiem);
             this.panelToolbar.Controls.Add(this.btnT_DanhSach);
             this.panelToolbar.Controls.Add(this.btnT_ThemMoi);
+            this.panelToolbar.Controls.Add(this.btnT_Backup);
+            this.panelToolbar.Controls.Add(this.btnT_Import);
             this.panelToolbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelToolbar.Location = new System.Drawing.Point(0, 28);
             this.panelToolbar.Name = "panelToolbar";
@@ -74,6 +78,34 @@ namespace QUANLY_TTB
             this.btnT_ThongKe.Text = "📊Thống kê";
             this.btnT_ThongKe.UseVisualStyleBackColor = false;
             this.btnT_ThongKe.Click += new System.EventHandler(this.btnNav_ThongKe_Click);
+            // 
+            // btnT_Backup
+            // 
+            this.btnT_Backup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(243)))), ((int)(((byte)(237)))));
+            this.btnT_Backup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnT_Backup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnT_Backup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(41)))));
+            this.btnT_Backup.Location = new System.Drawing.Point(480, 8);
+            this.btnT_Backup.Name = "btnT_Backup";
+            this.btnT_Backup.Size = new System.Drawing.Size(111, 34);
+            this.btnT_Backup.TabIndex = 6;
+            this.btnT_Backup.Text = "💾Sao lưu";
+            this.btnT_Backup.UseVisualStyleBackColor = false;
+            this.btnT_Backup.Click += new System.EventHandler(this.btnNav_Backup_Click);
+            // 
+            // btnT_Import
+            // 
+            this.btnT_Import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(243)))), ((int)(((byte)(237)))));
+            this.btnT_Import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnT_Import.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnT_Import.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(41)))));
+            this.btnT_Import.Location = new System.Drawing.Point(597, 8);
+            this.btnT_Import.Name = "btnT_Import";
+            this.btnT_Import.Size = new System.Drawing.Size(111, 34);
+            this.btnT_Import.TabIndex = 7;
+            this.btnT_Import.Text = "📥Nhập dữ liệu";
+            this.btnT_Import.UseVisualStyleBackColor = false;
+            this.btnT_Import.Click += new System.EventHandler(this.btnNav_Import_Click);
             // 
             // btnT_TimKiem
             // 
@@ -200,6 +232,8 @@ namespace QUANLY_TTB
         private System.Windows.Forms.Button btnT_TimKiem;
         private System.Windows.Forms.Button btnT_DanhSach;
         private System.Windows.Forms.Button btnT_ThemMoi;
+        private System.Windows.Forms.Button btnT_Backup;
+        private System.Windows.Forms.Button btnT_Import;
         private System.Windows.Forms.Panel panelStatus;
         private System.Windows.Forms.Label lblStatusRight;
         private System.Windows.Forms.Label lblStatusLeft;

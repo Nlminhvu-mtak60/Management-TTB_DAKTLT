@@ -23,7 +23,11 @@ namespace QUANLY_TTB
             if (DataStore.DsTTB.Count == 0) return;
 
             string key = "MaTTB";
-            if (cboSortCriteria.SelectedIndex == 1) key = "SoLuong";
+            if (cboSortCriteria.SelectedIndex == 1) key = "Ten";
+            if (cboSortCriteria.SelectedIndex == 2) key = "SoLuong";
+            if (cboSortCriteria.SelectedIndex == 3) key = "ChungLoai";
+            if (cboSortCriteria.SelectedIndex == 4) key = "Cap";
+
 
             int algoIdx = cboSortAlgorithm.SelectedIndex;
 
@@ -34,6 +38,10 @@ namespace QUANLY_TTB
                 case 1: DataStore.DsTTB = ThuatToan.InsertionSort(DataStore.DsTTB, key, true);
                     break;
                 case 2: DataStore.DsTTB = ThuatToan.BubbleSort(DataStore.DsTTB, key, true);
+                    break;
+                case 3: DataStore.DsTTB = ThuatToan.QuickSort(DataStore.DsTTB, key, true);
+                    break;
+                case 4: DataStore.DsTTB = ThuatToan.MergeSort(DataStore.DsTTB, key, true);
                     break;
             }
 

@@ -127,6 +127,8 @@ namespace QUANLY_TTB
             "Sắp xếp Chọn",
             "Sắp xếp Chèn",
             "Sắp xếp Nổi bọt",
+            "Sắp xếp Nhanh",
+            "Sắp xếp Trộn"
             });
             this.cboSortAlgorithm.Location = new System.Drawing.Point(220, 5);
             this.cboSortAlgorithm.Name = "cboSortAlgorithm";
@@ -140,7 +142,10 @@ namespace QUANLY_TTB
             this.cboSortCriteria.FormattingEnabled = true;
             this.cboSortCriteria.Items.AddRange(new object[] {
             "Theo Mã TTB",
-            "Theo Số lượng"});
+            "Theo Tên",
+            "Theo Số lượng",
+            "Theo Chủng Loại",
+            "Theo cấp"});
             this.cboSortCriteria.Location = new System.Drawing.Point(80, 5);
             this.cboSortCriteria.Name = "cboSortCriteria";
             this.cboSortCriteria.Size = new System.Drawing.Size(130, 27);
