@@ -39,6 +39,18 @@ namespace QUANLY_TTB
             this.cboCap = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.gbBaoDuong = new System.Windows.Forms.GroupBox();
+            this.tlpBaoDuong = new System.Windows.Forms.TableLayoutPanel();
+            this.labelBD1 = new System.Windows.Forms.Label();
+            this.labelBD2 = new System.Windows.Forms.Label();
+            this.labelBD3 = new System.Windows.Forms.Label();
+            this.labelBD4 = new System.Windows.Forms.Label();
+            this.dtpNgayBDCuoi = new System.Windows.Forms.DateTimePicker();
+            this.dtpNgayBDTiep = new System.Windows.Forms.DateTimePicker();
+            this.numChuKy = new System.Windows.Forms.NumericUpDown();
+            this.cboTinhTrang = new System.Windows.Forms.ComboBox();
+            this.labelBD5 = new System.Windows.Forms.Label();
+            this.txtLichSu = new System.Windows.Forms.TextBox();
             this.panelM1Actions = new System.Windows.Forms.Panel();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
@@ -47,22 +59,27 @@ namespace QUANLY_TTB
             this.panelM1_ThemMoi.SuspendLayout();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).BeginInit();
+            this.gbBaoDuong.SuspendLayout();
+            this.tlpBaoDuong.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numChuKy)).BeginInit();
             this.panelM1Actions.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelM1_ThemMoi
             // 
+            this.panelM1_ThemMoi.AutoScroll = true;
             this.panelM1_ThemMoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(238)))), ((int)(((byte)(233)))));
             this.panelM1_ThemMoi.Controls.Add(this.tlpMain);
             this.panelM1_ThemMoi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelM1_ThemMoi.Location = new System.Drawing.Point(0, 0);
             this.panelM1_ThemMoi.Name = "panelM1_ThemMoi";
             this.panelM1_ThemMoi.Padding = new System.Windows.Forms.Padding(20);
-            this.panelM1_ThemMoi.Size = new System.Drawing.Size(800, 548);
+            this.panelM1_ThemMoi.Size = new System.Drawing.Size(800, 650);
             this.panelM1_ThemMoi.TabIndex = 0;
             // 
             // tlpMain
             // 
+            this.tlpMain.AutoSize = true;
             this.tlpMain.ColumnCount = 3;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
@@ -87,12 +104,13 @@ namespace QUANLY_TTB
             this.tlpMain.Controls.Add(this.cboCap, 2, 7);
             this.tlpMain.Controls.Add(this.label15, 0, 8);
             this.tlpMain.Controls.Add(this.txtGhiChu, 0, 9);
-            this.tlpMain.Controls.Add(this.panelM1Actions, 0, 11);
-            this.tlpMain.Controls.Add(this.lblSaveMessage, 0, 10);
-            this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpMain.Controls.Add(this.gbBaoDuong, 0, 10);
+            this.tlpMain.Controls.Add(this.panelM1Actions, 0, 12);
+            this.tlpMain.Controls.Add(this.lblSaveMessage, 0, 11);
+            this.tlpMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpMain.Location = new System.Drawing.Point(20, 20);
             this.tlpMain.Name = "tlpMain";
-            this.tlpMain.RowCount = 12;
+            this.tlpMain.RowCount = 13;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -102,10 +120,11 @@ namespace QUANLY_TTB
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tlpMain.Size = new System.Drawing.Size(760, 508);
+            this.tlpMain.Size = new System.Drawing.Size(760, 607);
             this.tlpMain.TabIndex = 0;
             // 
             // label4
@@ -348,8 +367,171 @@ namespace QUANLY_TTB
             this.txtGhiChu.Location = new System.Drawing.Point(3, 284);
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(754, 141);
+            this.txtGhiChu.Size = new System.Drawing.Size(754, 54);
             this.txtGhiChu.TabIndex = 10;
+            // 
+            // gbBaoDuong
+            // 
+            this.tlpMain.SetColumnSpan(this.gbBaoDuong, 3);
+            this.gbBaoDuong.Controls.Add(this.tlpBaoDuong);
+            this.gbBaoDuong.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbBaoDuong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gbBaoDuong.Location = new System.Drawing.Point(3, 344);
+            this.gbBaoDuong.Name = "gbBaoDuong";
+            this.gbBaoDuong.Size = new System.Drawing.Size(754, 180);
+            this.gbBaoDuong.TabIndex = 11;
+            this.gbBaoDuong.TabStop = false;
+            this.gbBaoDuong.Text = "Thông tin bảo dưỡng";
+            // 
+            // tlpBaoDuong
+            // 
+            this.tlpBaoDuong.ColumnCount = 4;
+            this.tlpBaoDuong.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpBaoDuong.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpBaoDuong.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpBaoDuong.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpBaoDuong.Controls.Add(this.labelBD1, 0, 0);
+            this.tlpBaoDuong.Controls.Add(this.labelBD2, 1, 0);
+            this.tlpBaoDuong.Controls.Add(this.labelBD3, 2, 0);
+            this.tlpBaoDuong.Controls.Add(this.labelBD4, 3, 0);
+            this.tlpBaoDuong.Controls.Add(this.dtpNgayBDCuoi, 0, 1);
+            this.tlpBaoDuong.Controls.Add(this.dtpNgayBDTiep, 1, 1);
+            this.tlpBaoDuong.Controls.Add(this.numChuKy, 2, 1);
+            this.tlpBaoDuong.Controls.Add(this.cboTinhTrang, 3, 1);
+            this.tlpBaoDuong.Controls.Add(this.labelBD5, 0, 2);
+            this.tlpBaoDuong.Controls.Add(this.txtLichSu, 0, 3);
+            this.tlpBaoDuong.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpBaoDuong.Location = new System.Drawing.Point(3, 23);
+            this.tlpBaoDuong.Name = "tlpBaoDuong";
+            this.tlpBaoDuong.RowCount = 4;
+            this.tlpBaoDuong.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpBaoDuong.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpBaoDuong.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpBaoDuong.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpBaoDuong.Size = new System.Drawing.Size(748, 154);
+            this.tlpBaoDuong.TabIndex = 0;
+            // 
+            // labelBD1
+            // 
+            this.labelBD1.AutoSize = true;
+            this.labelBD1.Location = new System.Drawing.Point(3, 0);
+            this.labelBD1.Name = "labelBD1";
+            this.labelBD1.Size = new System.Drawing.Size(104, 20);
+            this.labelBD1.TabIndex = 0;
+            this.labelBD1.Text = "Ngày BD cuối";
+            // 
+            // labelBD2
+            // 
+            this.labelBD2.AutoSize = true;
+            this.labelBD2.Location = new System.Drawing.Point(190, 0);
+            this.labelBD2.Name = "labelBD2";
+            this.labelBD2.Size = new System.Drawing.Size(102, 20);
+            this.labelBD2.TabIndex = 1;
+            this.labelBD2.Text = "Ngày BD tiếp";
+            // 
+            // labelBD3
+            // 
+            this.labelBD3.AutoSize = true;
+            this.labelBD3.Location = new System.Drawing.Point(377, 0);
+            this.labelBD3.Name = "labelBD3";
+            this.labelBD3.Size = new System.Drawing.Size(113, 20);
+            this.labelBD3.TabIndex = 2;
+            this.labelBD3.Text = "Chu kỳ (tháng)";
+            // 
+            // labelBD4
+            // 
+            this.labelBD4.AutoSize = true;
+            this.labelBD4.Location = new System.Drawing.Point(564, 0);
+            this.labelBD4.Name = "labelBD4";
+            this.labelBD4.Size = new System.Drawing.Size(82, 20);
+            this.labelBD4.TabIndex = 3;
+            this.labelBD4.Text = "Tình trạng";
+            // 
+            // dtpNgayBDCuoi
+            // 
+            this.dtpNgayBDCuoi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpNgayBDCuoi.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpNgayBDCuoi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgayBDCuoi.Location = new System.Drawing.Point(3, 23);
+            this.dtpNgayBDCuoi.Margin = new System.Windows.Forms.Padding(3, 3, 10, 10);
+            this.dtpNgayBDCuoi.Name = "dtpNgayBDCuoi";
+            this.dtpNgayBDCuoi.Size = new System.Drawing.Size(174, 27);
+            this.dtpNgayBDCuoi.TabIndex = 4;
+            // 
+            // dtpNgayBDTiep
+            // 
+            this.dtpNgayBDTiep.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpNgayBDTiep.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpNgayBDTiep.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgayBDTiep.Location = new System.Drawing.Point(190, 23);
+            this.dtpNgayBDTiep.Margin = new System.Windows.Forms.Padding(3, 3, 10, 10);
+            this.dtpNgayBDTiep.Name = "dtpNgayBDTiep";
+            this.dtpNgayBDTiep.Size = new System.Drawing.Size(174, 27);
+            this.dtpNgayBDTiep.TabIndex = 5;
+            // 
+            // numChuKy
+            // 
+            this.numChuKy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numChuKy.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.numChuKy.Location = new System.Drawing.Point(377, 23);
+            this.numChuKy.Margin = new System.Windows.Forms.Padding(3, 3, 10, 10);
+            this.numChuKy.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numChuKy.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numChuKy.Name = "numChuKy";
+            this.numChuKy.Size = new System.Drawing.Size(174, 27);
+            this.numChuKy.TabIndex = 6;
+            this.numChuKy.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            // 
+            // cboTinhTrang
+            // 
+            this.cboTinhTrang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboTinhTrang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTinhTrang.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cboTinhTrang.Items.AddRange(new object[] {
+            "Tốt",
+            "Cần bảo dưỡng",
+            "Quá hạn bảo dưỡng",
+            "Đang sửa chữa",
+            "Thanh lý"});
+            this.cboTinhTrang.Location = new System.Drawing.Point(564, 23);
+            this.cboTinhTrang.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.cboTinhTrang.Name = "cboTinhTrang";
+            this.cboTinhTrang.Size = new System.Drawing.Size(181, 28);
+            this.cboTinhTrang.TabIndex = 7;
+            // 
+            // labelBD5
+            // 
+            this.labelBD5.AutoSize = true;
+            this.tlpBaoDuong.SetColumnSpan(this.labelBD5, 4);
+            this.labelBD5.Location = new System.Drawing.Point(3, 61);
+            this.labelBD5.Name = "labelBD5";
+            this.labelBD5.Size = new System.Drawing.Size(138, 20);
+            this.labelBD5.TabIndex = 8;
+            this.labelBD5.Text = "Lịch sử bảo dưỡng";
+            // 
+            // txtLichSu
+            // 
+            this.txtLichSu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tlpBaoDuong.SetColumnSpan(this.txtLichSu, 4);
+            this.txtLichSu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLichSu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtLichSu.Location = new System.Drawing.Point(3, 84);
+            this.txtLichSu.Multiline = true;
+            this.txtLichSu.Name = "txtLichSu";
+            this.txtLichSu.Size = new System.Drawing.Size(742, 67);
+            this.txtLichSu.TabIndex = 9;
             // 
             // panelM1Actions
             // 
@@ -358,10 +540,10 @@ namespace QUANLY_TTB
             this.panelM1Actions.Controls.Add(this.btnHuy);
             this.panelM1Actions.Controls.Add(this.btnNhapLai);
             this.panelM1Actions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelM1Actions.Location = new System.Drawing.Point(3, 461);
+            this.panelM1Actions.Location = new System.Drawing.Point(3, 560);
             this.panelM1Actions.Name = "panelM1Actions";
             this.panelM1Actions.Size = new System.Drawing.Size(754, 44);
-            this.panelM1Actions.TabIndex = 11;
+            this.panelM1Actions.TabIndex = 13;
             // 
             // btnLuu
             // 
@@ -410,7 +592,7 @@ namespace QUANLY_TTB
             this.tlpMain.SetColumnSpan(this.lblSaveMessage, 3);
             this.lblSaveMessage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSaveMessage.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblSaveMessage.Location = new System.Drawing.Point(3, 428);
+            this.lblSaveMessage.Location = new System.Drawing.Point(3, 527);
             this.lblSaveMessage.Name = "lblSaveMessage";
             this.lblSaveMessage.Size = new System.Drawing.Size(754, 30);
             this.lblSaveMessage.TabIndex = 12;
@@ -422,16 +604,21 @@ namespace QUANLY_TTB
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(238)))), ((int)(((byte)(233)))));
-            this.ClientSize = new System.Drawing.Size(800, 548);
+            this.ClientSize = new System.Drawing.Size(800, 650);
             this.Controls.Add(this.panelM1_ThemMoi);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormThemMoi";
             this.Text = "Thêm mới hồ sơ";
             this.panelM1_ThemMoi.ResumeLayout(false);
+            this.panelM1_ThemMoi.PerformLayout();
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).EndInit();
+            this.gbBaoDuong.ResumeLayout(false);
+            this.tlpBaoDuong.ResumeLayout(false);
+            this.tlpBaoDuong.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numChuKy)).EndInit();
             this.panelM1Actions.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -466,5 +653,17 @@ namespace QUANLY_TTB
         private System.Windows.Forms.ComboBox cboCap;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.GroupBox gbBaoDuong;
+        private System.Windows.Forms.TableLayoutPanel tlpBaoDuong;
+        private System.Windows.Forms.Label labelBD1;
+        private System.Windows.Forms.Label labelBD2;
+        private System.Windows.Forms.Label labelBD3;
+        private System.Windows.Forms.Label labelBD4;
+        private System.Windows.Forms.DateTimePicker dtpNgayBDCuoi;
+        private System.Windows.Forms.DateTimePicker dtpNgayBDTiep;
+        private System.Windows.Forms.NumericUpDown numChuKy;
+        private System.Windows.Forms.ComboBox cboTinhTrang;
+        private System.Windows.Forms.Label labelBD5;
+        private System.Windows.Forms.TextBox txtLichSu;
     }
 }

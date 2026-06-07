@@ -9,7 +9,13 @@
     "SoLuong": 120,
     "ChungLoai": "Vũ khí bộ binh",
     "Cap": 3,
-    "GhiChu": "Hàng tồn kho dự phòng"
+    "GhiChu": "Hàng tồn kho dự phòng",
+    "NgayBaoDuongCuoi": "2026-06-07T00:00:00",
+    "NgayBaoDuongTiep": "2027-07-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Thanh lý",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB002",
@@ -21,7 +27,13 @@
     "SoLuong": 30,
     "ChungLoai": "Thông tin liên lạc",
     "Cap": 2,
-    "GhiChu": "Thiết bị mới bảo dưỡng"
+    "GhiChu": "Thiết bị mới bảo dưỡng",
+    "NgayBaoDuongCuoi": "2026-06-07T00:00:00",
+    "NgayBaoDuongTiep": "2027-06-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "[07/06/2026 23:25] — Tình trạng: Tốt — Ghi chú: \n[07/06/2026 23:26] — Tình trạng: Tốt — Ghi chú: \n",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB003",
@@ -33,7 +45,13 @@
     "SoLuong": 200,
     "ChungLoai": "Quân trang",
     "Cap": 3,
-    "GhiChu": "Cấp cho tân binh"
+    "GhiChu": "Cấp cho tân binh",
+    "NgayBaoDuongCuoi": "2026-06-08T00:00:00",
+    "NgayBaoDuongTiep": "2027-07-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "[08/06/2026 02:42] — Tình trạng: Tốt — Ghi chú: \n",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB004",
@@ -45,7 +63,13 @@
     "SoLuong": 8,
     "ChungLoai": "Phương tiện cơ giới",
     "Cap": 1,
-    "GhiChu": "Xe vận tải chiến dịch"
+    "GhiChu": "Xe vận tải chiến dịch",
+    "NgayBaoDuongCuoi": "2026-06-08T00:00:00",
+    "NgayBaoDuongTiep": "2026-12-08T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Đang sửa chữa",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB005",
@@ -57,7 +81,13 @@
     "SoLuong": 500,
     "ChungLoai": "Hậu cần kỹ thuật",
     "Cap": 3,
-    "GhiChu": "Hạn sử dụng 12 tháng"
+    "GhiChu": "Hạn sử dụng 12 tháng",
+    "NgayBaoDuongCuoi": "2024-02-28T00:00:00",
+    "NgayBaoDuongTiep": "2024-08-28T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB006",
@@ -69,7 +99,13 @@
     "SoLuong": 15,
     "ChungLoai": "Thông tin liên lạc",
     "Cap": 3,
-    "GhiChu": "Đang hoạt động tốt"
+    "GhiChu": "Đang hoạt động tốt",
+    "NgayBaoDuongCuoi": "2022-05-01T00:00:00",
+    "NgayBaoDuongTiep": "2022-11-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB007",
@@ -81,7 +117,13 @@
     "SoLuong": 150,
     "ChungLoai": "Trang bị bảo hộ",
     "Cap": 2,
-    "GhiChu": "Kiểm tra định kỳ hàng năm"
+    "GhiChu": "Kiểm tra định kỳ hàng năm",
+    "NgayBaoDuongCuoi": "2021-08-10T00:00:00",
+    "NgayBaoDuongTiep": "2022-02-10T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB008",
@@ -93,7 +135,13 @@
     "SoLuong": 45,
     "ChungLoai": "Vũ khí bộ binh",
     "Cap": 3,
-    "GhiChu": "Súng trang bị cho sĩ quan"
+    "GhiChu": "Súng trang bị cho sĩ quan",
+    "NgayBaoDuongCuoi": "2019-01-01T00:00:00",
+    "NgayBaoDuongTiep": "2019-07-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB009",
@@ -105,7 +153,13 @@
     "SoLuong": 60,
     "ChungLoai": "Trang bị bảo hộ",
     "Cap": 2,
-    "GhiChu": "Vật liệu siêu bền"
+    "GhiChu": "Vật liệu siêu bền",
+    "NgayBaoDuongCuoi": "2022-04-17T00:00:00",
+    "NgayBaoDuongTiep": "2022-10-17T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB010",
@@ -117,7 +171,13 @@
     "SoLuong": 40,
     "ChungLoai": "Khí tài quang học",
     "Cap": 2,
-    "GhiChu": "Dùng cho trinh sát"
+    "GhiChu": "Dùng cho trinh sát",
+    "NgayBaoDuongCuoi": "2020-06-01T00:00:00",
+    "NgayBaoDuongTiep": "2020-12-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB011",
@@ -129,7 +189,13 @@
     "SoLuong": 12,
     "ChungLoai": "Vũ khí bộ binh",
     "Cap": 1,
-    "GhiChu": "Trang bị đặc biệt"
+    "GhiChu": "Trang bị đặc biệt",
+    "NgayBaoDuongCuoi": "2019-10-01T00:00:00",
+    "NgayBaoDuongTiep": "2020-04-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB012",
@@ -141,7 +207,13 @@
     "SoLuong": 3,
     "ChungLoai": "Phương tiện cơ giới",
     "Cap": 1,
-    "GhiChu": "Bảo dưỡng định kỳ 6 tháng"
+    "GhiChu": "Bảo dưỡng định kỳ 6 tháng",
+    "NgayBaoDuongCuoi": "2018-08-01T00:00:00",
+    "NgayBaoDuongTiep": "2019-02-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB013",
@@ -153,7 +225,13 @@
     "SoLuong": 300,
     "ChungLoai": "Trang bị bảo hộ",
     "Cap": 3,
-    "GhiChu": "Đạt tiêu chuẩn chống mảnh"
+    "GhiChu": "Đạt tiêu chuẩn chống mảnh",
+    "NgayBaoDuongCuoi": "2023-03-20T00:00:00",
+    "NgayBaoDuongTiep": "2023-09-20T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB014",
@@ -162,10 +240,16 @@
     "NgaySX": "2022-09-01T00:00:00",
     "NgaySD": "2022-11-15T00:00:00",
     "NguonCap": "Quân khu 1",
-    "SoLuong": 25,
-    "ChungLoai": "Khí tài quang học",
+    "SoLuong": 20,
+    "ChungLoai": "Khác",
     "Cap": 2,
-    "GhiChu": "Dùng cho chỉ huy cấp đại đội"
+    "GhiChu": "Dùng cho chỉ huy cấp đại đội",
+    "NgayBaoDuongCuoi": "2022-11-15T00:00:00",
+    "NgayBaoDuongTiep": "2023-05-15T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB015",
@@ -177,7 +261,13 @@
     "SoLuong": 50,
     "ChungLoai": "Hậu cần kỹ thuật",
     "Cap": 3,
-    "GhiChu": "Chống thấm nước"
+    "GhiChu": "Chống thấm nước",
+    "NgayBaoDuongCuoi": "2021-06-01T00:00:00",
+    "NgayBaoDuongTiep": "2021-12-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB016",
@@ -189,7 +279,13 @@
     "SoLuong": 10,
     "ChungLoai": "Vũ khí bộ binh",
     "Cap": 1,
-    "GhiChu": "Vũ khí chống tăng"
+    "GhiChu": "Vũ khí chống tăng",
+    "NgayBaoDuongCuoi": "2021-02-01T00:00:00",
+    "NgayBaoDuongTiep": "2021-08-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB017",
@@ -201,7 +297,13 @@
     "SoLuong": 80,
     "ChungLoai": "Hậu cần kỹ thuật",
     "Cap": 2,
-    "GhiChu": "Trang bị cho quân y tiểu đoàn"
+    "GhiChu": "Trang bị cho quân y tiểu đoàn",
+    "NgayBaoDuongCuoi": "2023-07-01T00:00:00",
+    "NgayBaoDuongTiep": "2024-01-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB018",
@@ -213,7 +315,13 @@
     "SoLuong": 500,
     "ChungLoai": "Quân trang",
     "Cap": 3,
-    "GhiChu": "Đế chống trơn trượt"
+    "GhiChu": "Đế chống trơn trượt",
+    "NgayBaoDuongCuoi": "2022-10-01T00:00:00",
+    "NgayBaoDuongTiep": "2023-04-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB019",
@@ -225,7 +333,13 @@
     "SoLuong": 6,
     "ChungLoai": "Hậu cần kỹ thuật",
     "Cap": 2,
-    "GhiChu": "Động cơ diesel"
+    "GhiChu": "Động cơ diesel",
+    "NgayBaoDuongCuoi": "2021-12-01T00:00:00",
+    "NgayBaoDuongTiep": "2022-06-01T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": false
   },
   {
     "MaTTB": "TTB020",
@@ -237,6 +351,12 @@
     "SoLuong": 5,
     "ChungLoai": "Phương tiện cơ giới",
     "Cap": 1,
-    "GhiChu": "Xe trinh sát địa hình"
+    "GhiChu": "Xe trinh sát địa hình",
+    "NgayBaoDuongCuoi": "2020-03-15T00:00:00",
+    "NgayBaoDuongTiep": "2020-09-15T00:00:00",
+    "ChuKyBaoDuong": 6,
+    "TinhTrang": "Tốt",
+    "LichSuBaoDuong": "",
+    "IsDeleted": true
   }
 ]

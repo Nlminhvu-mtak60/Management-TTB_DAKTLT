@@ -17,9 +17,11 @@ namespace QUANLY_TTB
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelM2_DanhSach = new System.Windows.Forms.Panel();
+            this.btnThungRac = new System.Windows.Forms.Button();
+            this.btnBaoDuong = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.panelSort = new System.Windows.Forms.Panel();
@@ -40,6 +42,8 @@ namespace QUANLY_TTB
             this.colNgaySX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgaySD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgayBDTiep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.panelM2_DanhSach.SuspendLayout();
             this.panelSort.SuspendLayout();
@@ -49,6 +53,8 @@ namespace QUANLY_TTB
             // panelM2_DanhSach
             // 
             this.panelM2_DanhSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(238)))), ((int)(((byte)(233)))));
+            this.panelM2_DanhSach.Controls.Add(this.btnThungRac);
+            this.panelM2_DanhSach.Controls.Add(this.btnBaoDuong);
             this.panelM2_DanhSach.Controls.Add(this.btnSua);
             this.panelM2_DanhSach.Controls.Add(this.btnXoa);
             this.panelM2_DanhSach.Controls.Add(this.panelSort);
@@ -62,6 +68,37 @@ namespace QUANLY_TTB
             this.panelM2_DanhSach.TabIndex = 1;
             this.panelM2_DanhSach.Paint += new System.Windows.Forms.PaintEventHandler(this.panelM2_DanhSach_Paint_2);
             // 
+            // btnThungRac
+            // 
+            this.btnThungRac.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnThungRac.BackColor = System.Drawing.Color.DimGray;
+            this.btnThungRac.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThungRac.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnThungRac.ForeColor = System.Drawing.Color.White;
+            this.btnThungRac.Location = new System.Drawing.Point(12, 510);
+            this.btnThungRac.Name = "btnThungRac";
+            this.btnThungRac.Size = new System.Drawing.Size(128, 30);
+            this.btnThungRac.TabIndex = 6;
+            this.btnThungRac.Text = "🗑 Thùng rác";
+            this.btnThungRac.UseVisualStyleBackColor = false;
+            this.btnThungRac.Click += new System.EventHandler(this.btnThungRac_Click);
+            // 
+            // btnBaoDuong
+            // 
+            this.btnBaoDuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBaoDuong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(120)))), ((int)(((byte)(40)))));
+            this.btnBaoDuong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBaoDuong.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBaoDuong.ForeColor = System.Drawing.Color.White;
+            this.btnBaoDuong.Location = new System.Drawing.Point(395, 510);
+            this.btnBaoDuong.Name = "btnBaoDuong";
+            this.btnBaoDuong.Size = new System.Drawing.Size(128, 30);
+            this.btnBaoDuong.TabIndex = 6;
+            this.btnBaoDuong.Text = "🔧 Bảo dưỡng";
+            this.btnBaoDuong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaoDuong.UseVisualStyleBackColor = false;
+            this.btnBaoDuong.Click += new System.EventHandler(this.btnBaoDuong_Click);
+            // 
             // btnSua
             // 
             this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -69,9 +106,9 @@ namespace QUANLY_TTB
             this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(594, 510);
+            this.btnSua.Location = new System.Drawing.Point(529, 510);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(90, 30);
+            this.btnSua.Size = new System.Drawing.Size(128, 30);
             this.btnSua.TabIndex = 4;
             this.btnSua.Text = "✏ Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
@@ -84,9 +121,9 @@ namespace QUANLY_TTB
             this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(694, 510);
+            this.btnXoa.Location = new System.Drawing.Point(663, 510);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(90, 30);
+            this.btnXoa.Size = new System.Drawing.Size(128, 30);
             this.btnXoa.TabIndex = 5;
             this.btnXoa.Text = "🗑 Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
@@ -128,8 +165,7 @@ namespace QUANLY_TTB
             "Sắp xếp Chèn",
             "Sắp xếp Nổi bọt",
             "Sắp xếp Nhanh",
-            "Sắp xếp Trộn"
-            });
+            "Sắp xếp Trộn"});
             this.cboSortAlgorithm.Location = new System.Drawing.Point(220, 5);
             this.cboSortAlgorithm.Name = "cboSortAlgorithm";
             this.cboSortAlgorithm.Size = new System.Drawing.Size(150, 27);
@@ -184,14 +220,14 @@ namespace QUANLY_TTB
             this.dgvDanhSach.BackgroundColor = System.Drawing.Color.White;
             this.dgvDanhSach.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDanhSach.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDanhSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(92)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDanhSach.ColumnHeadersHeight = 35;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSTT,
@@ -204,15 +240,17 @@ namespace QUANLY_TTB
             this.colCap,
             this.colNgaySX,
             this.colNgaySD,
-            this.colGhiChu});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(224)))), ((int)(((byte)(202)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDanhSach.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colGhiChu,
+            this.colNgayBDTiep,
+            this.colTinhTrang});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(224)))), ((int)(((byte)(202)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDanhSach.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDanhSach.EnableHeadersVisualStyles = false;
             this.dgvDanhSach.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvDanhSach.Location = new System.Drawing.Point(16, 50);
@@ -307,6 +345,20 @@ namespace QUANLY_TTB
             this.colGhiChu.Name = "colGhiChu";
             this.colGhiChu.ReadOnly = true;
             // 
+            // colNgayBDTiep
+            // 
+            this.colNgayBDTiep.HeaderText = "Ngày BD Tiếp";
+            this.colNgayBDTiep.MinimumWidth = 6;
+            this.colNgayBDTiep.Name = "colNgayBDTiep";
+            this.colNgayBDTiep.ReadOnly = true;
+            // 
+            // colTinhTrang
+            // 
+            this.colTinhTrang.HeaderText = "Tình Trạng";
+            this.colTinhTrang.MinimumWidth = 6;
+            this.colTinhTrang.Name = "colTinhTrang";
+            this.colTinhTrang.ReadOnly = true;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -355,12 +407,16 @@ namespace QUANLY_TTB
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySX;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGhiChu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNgayBDTiep;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTinhTrang;
         private System.Windows.Forms.Panel panelSort;
         private System.Windows.Forms.Button btnPerformSort;
         private System.Windows.Forms.ComboBox cboSortCriteria;
         private System.Windows.Forms.ComboBox cboSortAlgorithm;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnBaoDuong;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnThungRac;
     }
 }

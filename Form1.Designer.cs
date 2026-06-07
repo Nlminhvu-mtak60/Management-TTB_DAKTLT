@@ -184,6 +184,22 @@ namespace QUANLY_TTB
             this.lblStatusLeft.TabIndex = 0;
             this.lblStatusLeft.Text = "Hệ thống sẵn sàng...";
             // 
+
+
+            // 
+            // lblStatusRight
+            // 
+            this.lblStatusRight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblStatusRight.AutoSize = true;
+            this.lblStatusRight.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblStatusRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(41)))));
+            this.lblStatusRight.Location = new System.Drawing.Point(818, 2);
+            this.lblStatusRight.Name = "lblStatusRight";
+            this.lblStatusRight.Size = new System.Drawing.Size(129, 20);
+            this.lblStatusRight.TabIndex = 1;
+            this.lblStatusRight.Text = "QUẢN LÝ THIẾT BỊ";
+            // 
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(238)))), ((int)(((byte)(233)))));
@@ -218,6 +234,7 @@ namespace QUANLY_TTB
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý Trang Thiết Bị";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panelToolbar.ResumeLayout(false);
             this.panelStatus.ResumeLayout(false);
             this.panelStatus.PerformLayout();
@@ -235,8 +252,8 @@ namespace QUANLY_TTB
         private System.Windows.Forms.Button btnT_Backup;
         private System.Windows.Forms.Button btnT_Import;
         private System.Windows.Forms.Panel panelStatus;
-        private System.Windows.Forms.Label lblStatusRight;
         private System.Windows.Forms.Label lblStatusLeft;
+        private System.Windows.Forms.Label lblStatusRight;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelTitleBar;
     }

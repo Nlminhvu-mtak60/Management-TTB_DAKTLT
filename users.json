@@ -1,0 +1,20 @@
+[
+  {
+    "TenDangNhap": "admin",
+    "MatKhau": "827ccb0eea8a706c4c34a16891f84e7b",
+    "VaiTro": "ADMIN",
+    "HoTen": "Quản trị viên hệ thống"
+  },
+  {
+    "TenDangNhap": "quanly",
+    "MatKhau": "827ccb0eea8a706c4c34a16891f84e7b",
+    "VaiTro": "MANAGER",
+    "HoTen": "Cán bộ quản lý"
+  },
+  {
+    "TenDangNhap": "nguoixem",
+    "MatKhau": "827ccb0eea8a706c4c34a16891f84e7b",
+    "VaiTro": "VIEWER",
+    "HoTen": "Nhân viên xem"
+  }
+]

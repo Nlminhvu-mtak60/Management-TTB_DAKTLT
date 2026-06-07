@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +16,16 @@ namespace QUANLY_TTB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            
+            FormDangNhap frmLogin = new FormDangNhap();
+            if (frmLogin.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Form1());
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }

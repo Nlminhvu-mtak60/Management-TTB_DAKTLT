@@ -17,7 +17,46 @@ namespace QUANLY_TTB
         private void Form1_Load(object sender, EventArgs e)
         {
             DataStore.LoadData();
+            ApDungPhanQuyen();
             OpenChildForm(new FormThemMoi());
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            CanhBaoBaoDuong();
+        }
+
+        private void ApDungPhanQuyen()
+        {
+            btnT_Backup.Visible = DataStore.CoQuyen("Backup");
+            btnT_Import.Visible = DataStore.CoQuyen("Import");
+
+            if (DataStore.NguoiDungHienTai != null)
+            {
+                if (lblStatusRight != null)
+                {
+                    lblStatusRight.Text = $"Người dùng: {DataStore.NguoiDungHienTai.HoTen} ({DataStore.NguoiDungHienTai.VaiTro})";
+                }
+            }
+        }
+
+        private void CanhBaoBaoDuong()
+        {
+            int thietBiCanChuY = 0;
+            foreach (var ttb in DataStore.DsTTB)
+            {
+                string tinhTrang = ttb.TinhTrangHienTai();
+                if (tinhTrang == "Quá hạn bảo dưỡng" || tinhTrang == "Cần bảo dưỡng")
+                {
+                    thietBiCanChuY++;
+                }
+            }
+
+            if (thietBiCanChuY > 0)
+            {
+                MessageBox.Show($"Cảnh báo: Có {thietBiCanChuY} thiết bị đang quá hạn hoặc sắp đến hạn bảo dưỡng trong 30 ngày tới.\nVui lòng kiểm tra tab Thống kê để xem chi tiết!", 
+                    "Cảnh báo bảo dưỡng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void OpenChildForm(Form childForm)

@@ -16,16 +16,20 @@ namespace QUANLY_TTB
         {
             dgvTimKiem.Rows.Clear();
             if (DataStore.DsTTB == null) return;
+            int stt = 1;
             for (int i = 0; i < DataStore.DsTTB.Count; i++)
             {
                 var item = DataStore.DsTTB[i];
+                if (item.IsDeleted) continue; // Bỏ qua thiết bị đã xóa
                 dgvTimKiem.Rows.Add(
-                    i + 1,
+                    stt++,
                     item.MaTTB,
                     item.Ten,
                     item.ChungLoai,
                     item.SoLuong,
-                    item.Cap
+                    item.Cap,
+                    item.NgayBaoDuongTiep.ToString("dd/MM/yyyy"),
+                    item.TinhTrangHienTai()
                 );
             }
         }
@@ -87,7 +91,9 @@ namespace QUANLY_TTB
                     item.Ten,
                     item.ChungLoai,
                     item.SoLuong,
-                    item.Cap
+                    item.Cap,
+                    item.NgayBaoDuongTiep.ToString("dd/MM/yyyy"),
+                    item.TinhTrangHienTai()
                 );
             }
 

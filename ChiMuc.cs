@@ -4,6 +4,17 @@ using System.Collections.Generic;
 namespace QUANLY_TTB
 {
     /// <summary>
+    /// Lớp lưu trữ cấu trúc chỉ mục dùng để serialize/deserialize ra file JSON.
+    /// </summary>
+    public class ChiMucData
+    {
+        public Dictionary<string, List<int>> MaTTB { get; set; }
+        public Dictionary<string, List<int>> Ten { get; set; }
+        public Dictionary<string, List<int>> ChungLoai { get; set; }
+        public Dictionary<string, List<int>> NguonCap { get; set; }
+    }
+
+    /// <summary>
     /// Lớp ChiMuc (Index) - Xây dựng bảng tra cứu để tìm kiếm nhanh O(1)
     /// thay vì duyệt tuần tự O(n).
     /// 
@@ -46,6 +57,7 @@ namespace QUANLY_TTB
             for (int i = 0; i < dsTTB.Count; i++)
             {
                 TrangThietBi ttb = dsTTB[i];
+                if (ttb.IsDeleted) continue; // Bỏ qua thiết bị đã bị xóa mềm
 
                 // Chỉ mục theo Mã TTB
                 ThemVaoChiMuc(indexMaTTB, ttb.MaTTB, i, false);
@@ -318,6 +330,60 @@ namespace QUANLY_TTB
             if (field == "ChungLoai") return indexChungLoai;
             if (field == "NguonCap") return indexNguonCap;
             return null;
+        }
+
+        /// <summary>
+        /// Xuất dữ liệu chỉ mục nội bộ ra đối tượng ChiMucData để lưu trữ.
+        /// </summary>
+        public ChiMucData ExportData()
+        {
+            return new ChiMucData
+            {
+                MaTTB = new Dictionary<string, List<int>>(this.indexMaTTB, StringComparer.OrdinalIgnoreCase),
+                Ten = new Dictionary<string, List<int>>(this.indexTen, StringComparer.OrdinalIgnoreCase),
+                ChungLoai = new Dictionary<string, List<int>>(this.indexChungLoai, StringComparer.OrdinalIgnoreCase),
+                NguonCap = new Dictionary<string, List<int>>(this.indexNguonCap, StringComparer.OrdinalIgnoreCase)
+            };
+        }
+
+        /// <summary>
+        /// Nạp dữ liệu chỉ mục từ đối tượng ChiMucData đọc từ file JSON.
+        /// Có null-check đầy đủ cho từng dictionary.
+        /// </summary>
+        public void ImportData(ChiMucData data, List<TrangThietBi> dsTTB)
+        {
+            this.danhSachGoc = dsTTB;
+            
+            if (data != null)
+            {
+                if (data.MaTTB != null) 
+                    this.indexMaTTB = new Dictionary<string, List<int>>(data.MaTTB, StringComparer.OrdinalIgnoreCase);
+                else 
+                    this.indexMaTTB.Clear();
+
+                if (data.Ten != null) 
+                    this.indexTen = new Dictionary<string, List<int>>(data.Ten, StringComparer.OrdinalIgnoreCase);
+                else 
+                    this.indexTen.Clear();
+
+                if (data.ChungLoai != null) 
+                    this.indexChungLoai = new Dictionary<string, List<int>>(data.ChungLoai, StringComparer.OrdinalIgnoreCase);
+                else 
+                    this.indexChungLoai.Clear();
+
+                if (data.NguonCap != null) 
+                    this.indexNguonCap = new Dictionary<string, List<int>>(data.NguonCap, StringComparer.OrdinalIgnoreCase);
+                else 
+                    this.indexNguonCap.Clear();
+            }
+            else
+            {
+                // Nếu data null, xóa sạch chỉ mục
+                this.indexMaTTB.Clear();
+                this.indexTen.Clear();
+                this.indexChungLoai.Clear();
+                this.indexNguonCap.Clear();
+            }
         }
 
         /// <summary>

@@ -12,10 +12,42 @@ namespace QUANLY_TTB
         {
             InitializeComponent();
             this.Load += FormThemMoi_Load;
-            
+
+            cboChungLoai.SelectedIndex = 0;
+            cboCap.SelectedIndex = 0;
+            cboTinhTrang.SelectedIndex = 0;
+
+            // Xử lý sự kiện tự động tính ngày BD tiếp theo
+            dtpNgayBDCuoi.ValueChanged += TinhNgayBDTiep;
+            numChuKy.ValueChanged += TinhNgayBDTiep;
+
             if (btnLuu != null) btnLuu.Click += btnLuu_Click;
             if (btnNhapLai != null) btnNhapLai.Click += btnNhapLai_Click;
             if (btnHuy != null) btnHuy.Click += btnHuy_Click;
+        }
+
+        private string GenerateNewMaTTB()
+        {
+            int maxId = 0;
+            foreach (var item in DataStore.DsTTB)
+            {
+                if (item.MaTTB.StartsWith("TTB"))
+                {
+                    if (int.TryParse(item.MaTTB.Substring(3), out int num))
+                    {
+                        if (num > maxId) maxId = num;
+                    }
+                }
+            }
+            return "TTB" + (maxId + 1).ToString("D3");
+        }
+
+        private void TinhNgayBDTiep(object sender, EventArgs e)
+        {
+            if (numChuKy.Value > 0)
+            {
+                dtpNgayBDTiep.Value = dtpNgayBDCuoi.Value.AddMonths((int)numChuKy.Value);
+            }
         }
 
         public FormThemMoi(int index) : this()
@@ -50,6 +82,21 @@ namespace QUANLY_TTB
                 return;
             }
 
+            if (editIndex < 0)
+            {
+                var existingTTB = DataStore.DsTTB.Find(x => x.MaTTB.Equals(txtMaTTB.Text.Trim(), StringComparison.OrdinalIgnoreCase));
+                if (existingTTB != null)
+                {
+                    if (existingTTB.IsDeleted)
+                        ShowSaveMessage("Mã TTB này đã tồn tại (đang nằm trong Thùng rác)!", false);
+                    else
+                        ShowSaveMessage("Mã TTB này đã tồn tại trong hệ thống!", false);
+                    
+                    txtMaTTB.Focus();
+                    return;
+                }
+            }
+
             TrangThietBi ttb = new TrangThietBi
             {
                 MaTTB = txtMaTTB.Text.Trim(),
@@ -57,11 +104,16 @@ namespace QUANLY_TTB
                 Ten = txtTen.Text.Trim(),
                 NgaySX = dtpNgaySX.Value,
                 NgaySD = dtpNgaySD.Value,
-                NguonCap = txtNguonCap.Text.Trim(),
+                NguonCap = string.IsNullOrWhiteSpace(txtNguonCap.Text) ? "Không rõ" : txtNguonCap.Text.Trim(),
                 SoLuong = (int)numSoLuong.Value,
                 ChungLoai = cboChungLoai.SelectedItem?.ToString() ?? "Khác",
-                Cap = cboCap.SelectedIndex + 1,
-                GhiChu = txtGhiChu.Text.Trim()
+                Cap = int.Parse(cboCap.SelectedItem.ToString().Substring(0, 1)),
+                GhiChu = txtGhiChu.Text.Trim(),
+                NgayBaoDuongCuoi = dtpNgayBDCuoi.Value,
+                NgayBaoDuongTiep = dtpNgayBDTiep.Value,
+                ChuKyBaoDuong = (int)numChuKy.Value,
+                TinhTrang = cboTinhTrang.SelectedItem.ToString(),
+                LichSuBaoDuong = txtLichSu.Text.Trim()
             };
 
             if (editIndex >= 0)
@@ -124,6 +176,18 @@ namespace QUANLY_TTB
                 txtNguonCap.Text = ttb.NguonCap;
                 numSoLuong.Value = ttb.SoLuong;
                 txtGhiChu.Text = ttb.GhiChu;
+
+                dtpNgayBDCuoi.Value = ttb.NgayBaoDuongCuoi >= dtpNgayBDCuoi.MinDate ? ttb.NgayBaoDuongCuoi : dtpNgayBDCuoi.MinDate;
+                dtpNgayBDTiep.Value = ttb.NgayBaoDuongTiep >= dtpNgayBDTiep.MinDate ? ttb.NgayBaoDuongTiep : dtpNgayBDTiep.MinDate;
+                numChuKy.Value = ttb.ChuKyBaoDuong > 0 ? ttb.ChuKyBaoDuong : 6;
+                txtLichSu.Text = ttb.LichSuBaoDuong;
+
+                for (int i = 0; i < cboTinhTrang.Items.Count; i++)
+                {
+                    if (cboTinhTrang.Items[i].ToString() == ttb.TinhTrang)
+                    { cboTinhTrang.SelectedIndex = i; break; }
+                }
+
                 for (int i = 0; i < cboChungLoai.Items.Count; i++)
                 {
                     if (cboChungLoai.Items[i].ToString() == ttb.ChungLoai)
@@ -133,8 +197,11 @@ namespace QUANLY_TTB
             }
             else
             {
-                // Chế độ THÊM MỚI: Xóa trắng toàn bộ
-                txtMaTTB.Clear();
+                // Chế độ THÊM MỚI: Xóa trắng toàn bộ và sinh mã tự động
+                txtMaTTB.Text = GenerateNewMaTTB();
+                txtMaTTB.ReadOnly = true;
+                txtMaTTB.BackColor = Color.FromArgb(230, 230, 230);
+                
                 txtSoHieu.Clear();
                 txtTen.Clear();
                 txtNguonCap.Clear();
@@ -144,6 +211,14 @@ namespace QUANLY_TTB
                 cboCap.SelectedIndex = 2;
                 dtpNgaySX.Value = DateTime.Now;
                 dtpNgaySD.Value = DateTime.Now;
+
+                dtpNgayBDCuoi.Value = DateTime.Now;
+                dtpNgayBDTiep.Value = DateTime.Now.AddMonths(6);
+                numChuKy.Value = 6;
+                cboTinhTrang.SelectedIndex = 0;
+                txtLichSu.Clear();
+
+                txtSoHieu.Focus(); // Focus vào ô kế tiếp
             }
             lblSaveMessage.Visible = false;
         }
@@ -188,6 +263,20 @@ namespace QUANLY_TTB
                 numSoLuong.Value = ttb.SoLuong;
                 txtGhiChu.Text = ttb.GhiChu;
 
+                dtpNgayBDCuoi.Value = ttb.NgayBaoDuongCuoi >= dtpNgayBDCuoi.MinDate ? ttb.NgayBaoDuongCuoi : dtpNgayBDCuoi.MinDate;
+                dtpNgayBDTiep.Value = ttb.NgayBaoDuongTiep >= dtpNgayBDTiep.MinDate ? ttb.NgayBaoDuongTiep : dtpNgayBDTiep.MinDate;
+                numChuKy.Value = ttb.ChuKyBaoDuong > 0 ? ttb.ChuKyBaoDuong : 6;
+                txtLichSu.Text = ttb.LichSuBaoDuong;
+
+                for (int i = 0; i < cboTinhTrang.Items.Count; i++)
+                {
+                    if (cboTinhTrang.Items[i].ToString() == ttb.TinhTrang)
+                    {
+                        cboTinhTrang.SelectedIndex = i;
+                        break;
+                    }
+                }
+
                 // Tìm và chọn đúng mục Chủng loại trong ComboBox
                 for (int i = 0; i < cboChungLoai.Items.Count; i++)
                 {
@@ -205,6 +294,13 @@ namespace QUANLY_TTB
                 // Đổi tiêu đề nút và form cho phù hợp
                 btnLuu.Text = "💾 Cập nhật";
                 this.Text = "Sửa hồ sơ trang thiết bị";
+            }
+            else
+            {
+                // Nếu đang ở chế độ THÊM MỚI → Tự động sinh mã TTB
+                txtMaTTB.Text = GenerateNewMaTTB();
+                txtMaTTB.ReadOnly = true;
+                txtMaTTB.BackColor = Color.FromArgb(230, 230, 230);
             }
         }
 

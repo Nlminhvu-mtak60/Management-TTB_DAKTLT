@@ -21,7 +21,14 @@ namespace QUANLY_TTB
 
         private void RenderThongKe()
         {
-            var list = DataStore.DsTTB;
+            var list = new List<TrangThietBi>();
+            for (int i = 0; i < DataStore.DsTTB.Count; i++)
+            {
+                if (!DataStore.DsTTB[i].IsDeleted)
+                {
+                    list.Add(DataStore.DsTTB[i]);
+                }
+            }
             
             // Tổng số lượng
             int tongSoLuong = 0;

@@ -25,6 +25,8 @@ namespace QUANLY_TTB
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblSearchMessage = new System.Windows.Forms.Label();
             this.btnXoaTim = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
@@ -73,7 +75,9 @@ namespace QUANLY_TTB
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
             this.dgvTimKiem.Location = new System.Drawing.Point(16, 148);
             this.dgvTimKiem.Name = "dgvTimKiem";
             this.dgvTimKiem.ReadOnly = true;
@@ -125,6 +129,20 @@ namespace QUANLY_TTB
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Ngày BD Tiếp";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Tình Trạng";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // lblSearchMessage
             // 
@@ -263,6 +281,8 @@ namespace QUANLY_TTB
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.Label lblSearchMessage;
         private System.Windows.Forms.Button btnXoaTim;
         private System.Windows.Forms.Button btnTim;

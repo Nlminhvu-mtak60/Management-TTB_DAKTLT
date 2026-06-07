@@ -9,10 +9,19 @@ namespace QUANLY_TTB
         {
             InitializeComponent();
             this.Load += FormDanhSach_Load;
+            cboSortCriteria.SelectedIndex = 0;
         }
 
         private void FormDanhSach_Load(object sender, EventArgs e)
         {
+            btnXoa.Visible = DataStore.CoQuyen("Xoa");
+            btnSua.Visible = DataStore.CoQuyen("Sua");
+            btnBaoDuong.Visible = DataStore.CoQuyen("BaoDuong");
+            
+            if (btnThungRac != null)
+            {
+                btnThungRac.Visible = DataStore.CoQuyen("Xoa");
+            }
             LoadDataToGrid();
             if(cboSortCriteria != null) cboSortCriteria.SelectedIndex = 0;
             if(cboSortAlgorithm != null) cboSortAlgorithm.SelectedIndex = 0;
@@ -64,11 +73,14 @@ namespace QUANLY_TTB
             dgvDanhSach.Rows.Clear();
             var list = DataStore.DsTTB;
 
+            int stt = 1;
             for (int i = 0; i < list.Count; i++)
             {
                 var item = list[i];
+                if (item.IsDeleted) continue; // Bỏ qua thiết bị đã bị xóa mềm
+
                 dgvDanhSach.Rows.Add(
-                    i + 1,
+                    stt++,
                     item.MaTTB,
                     item.SoHieu,
                     item.Ten,
@@ -78,11 +90,13 @@ namespace QUANLY_TTB
                     item.Cap,
                     item.NgaySX.ToString("dd/MM/yyyy"),
                     item.NgaySD.ToString("dd/MM/yyyy"),
-                    item.GhiChu
+                    item.GhiChu,
+                    item.NgayBaoDuongTiep.ToString("dd/MM/yyyy"),
+                    item.TinhTrangHienTai()
                 );
             }
 
-            lblRecordCount.Text = list.Count + " bản ghi";
+            lblRecordCount.Text = (stt - 1) + " bản ghi";
         }
 
         //Sửa 
@@ -95,51 +109,103 @@ namespace QUANLY_TTB
                 return;
             }
 
-            int rowIndex = dgvDanhSach.SelectedRows[0].Index;
-            if (rowIndex < 0 || rowIndex >= DataStore.DsTTB.Count) return;
+            string maTTB = dgvDanhSach.SelectedRows[0].Cells[1].Value.ToString();
+            int realIndex = DataStore.DsTTB.FindIndex(x => x.MaTTB == maTTB);
+            if (realIndex < 0) return;
 
-            FormThemMoi formSua = new FormThemMoi(rowIndex);
+            FormThemMoi formSua = new FormThemMoi(realIndex);
             formSua.ShowDialog();
 
             LoadDataToGrid();
         }
 
+        private void dgvDanhSach_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && DataStore.CoQuyen("Sua"))
+            {
+                string maTTB = dgvDanhSach.Rows[e.RowIndex].Cells[1].Value.ToString();
+                int realIndex = DataStore.DsTTB.FindIndex(x => x.MaTTB == maTTB);
+                if (realIndex >= 0)
+                {
+                    FormThemMoi formSua = new FormThemMoi(realIndex);
+                    formSua.ShowDialog();
+                    LoadDataToGrid();
+                }
+            }
+        }
+
         // Xóa 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dgvDanhSach.SelectedRows.Count == 0)
+            if (!DataStore.CoQuyen("Xoa"))
             {
-                MessageBox.Show("Vui lòng chọn một dòng để xóa!",
-                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn không có quyền Xóa thiết bị!", "Lỗi phân quyền", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Lấy chỉ số dòng đang chọn
-            int rowIndex = dgvDanhSach.SelectedRows[0].Index;
-            if (rowIndex < 0 || rowIndex >= DataStore.DsTTB.Count) return;
-
-            // Lấy tên TTB để hiển thị trong hộp thoại xác nhận
-            string tenTTB = DataStore.DsTTB[rowIndex].Ten;
-
-            // Hỏi xác nhận trước khi xóa
-            DialogResult confirm = MessageBox.Show(
-                string.Format("Bạn có chắc chắn muốn xóa:\n\"{0}\"?", tenTTB),
-                "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirm == DialogResult.Yes)
+            if (dgvDanhSach.SelectedRows.Count == 0)
             {
-                // Xóa phần tử khỏi danh sách
-                DataStore.DsTTB.RemoveAt(rowIndex);
-
-                // Lưu lại file
-                DataStore.SaveData();
-
-                // Cập nhật lại bảng
-                LoadDataToGrid();
-
-                MessageBox.Show("Đã xóa thành công!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng chọn một trang thiết bị để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa trang thiết bị này?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                string maTTB = dgvDanhSach.SelectedRows[0].Cells[1].Value.ToString();
+                int realIndex = DataStore.DsTTB.FindIndex(x => x.MaTTB == maTTB);
+                if (realIndex >= 0)
+                {
+                    DataStore.DsTTB[realIndex].IsDeleted = true; // Thực hiện Soft Delete
+                    DataStore.SaveData();
+                    LoadDataToGrid();
+                    MessageBox.Show("Đã xóa thiết bị thành công (bạn có thể khôi phục trong Thùng Rác)!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnThungRac_Click(object sender, EventArgs e)
+        {
+            if (!DataStore.CoQuyen("Xoa"))
+            {
+                MessageBox.Show("Bạn không có quyền xem Thùng rác!", "Lỗi phân quyền", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            FormThungRac frm = new FormThungRac();
+            frm.ShowDialog();
+
+            // Load lại danh sách sau khi đóng thùng rác (trường hợp user khôi phục thiết bị)
+            LoadDataToGrid();
+        }
+
+        private void btnBaoDuong_Click(object sender, EventArgs e)
+        {
+            if (!DataStore.CoQuyen("BaoDuong"))
+            {
+                MessageBox.Show("Bạn không có quyền cập nhật bảo dưỡng!", "Lỗi phân quyền", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (dgvDanhSach.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một trang thiết bị để cập nhật bảo dưỡng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string maTTB = dgvDanhSach.SelectedRows[0].Cells[1].Value.ToString();
+            int realIndex = DataStore.DsTTB.FindIndex(x => x.MaTTB == maTTB);
+            if (realIndex < 0) return;
+
+            FormBaoDuong frm = new FormBaoDuong(realIndex);
+            frm.ShowDialog();
+
+            LoadDataToGrid();
         }
 
         private void dgvDanhSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
