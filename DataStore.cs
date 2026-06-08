@@ -32,7 +32,7 @@ namespace QUANLY_TTB
             if (vaiTro == "VIEWER")
             {
                 if (chucNang == "BaoDuong") return false;
-                if (chucNang == "Xem" || chucNang == "TimKiem" || chucNang == "ThongKe")
+                if (chucNang == "Xem" || chucNang == "TimKiem")
                     return true;
                 return false;
             }

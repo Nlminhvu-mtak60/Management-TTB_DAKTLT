@@ -66,7 +66,7 @@ namespace QUANLY_TTB
             this.panelM2_DanhSach.Name = "panelM2_DanhSach";
             this.panelM2_DanhSach.Size = new System.Drawing.Size(800, 548);
             this.panelM2_DanhSach.TabIndex = 1;
-            this.panelM2_DanhSach.Paint += new System.Windows.Forms.PaintEventHandler(this.panelM2_DanhSach_Paint_2);
+            // this.panelM2_DanhSach.Paint += new System.Windows.Forms.PaintEventHandler(this.panelM2_DanhSach_Paint_2);
             // 
             // btnThungRac
             // 
@@ -262,7 +262,7 @@ namespace QUANLY_TTB
             this.dgvDanhSach.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDanhSach.Size = new System.Drawing.Size(768, 450);
             this.dgvDanhSach.TabIndex = 1;
-            this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
+            // this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
             // 
             // colSTT
             // 

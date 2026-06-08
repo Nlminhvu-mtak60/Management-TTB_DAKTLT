@@ -18,7 +18,7 @@ namespace QUANLY_TTB
         {
             DataStore.LoadData();
             ApDungPhanQuyen();
-            OpenChildForm(new FormThemMoi());
+            OpenChildForm(new FormDanhSach());
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -30,6 +30,8 @@ namespace QUANLY_TTB
         {
             btnT_Backup.Visible = DataStore.CoQuyen("Backup");
             btnT_Import.Visible = DataStore.CoQuyen("Import");
+            btnT_ThemMoi.Visible = DataStore.CoQuyen("Them");
+            btnT_ThongKe.Visible = DataStore.CoQuyen("ThongKe");
 
             if (DataStore.NguoiDungHienTai != null)
             {

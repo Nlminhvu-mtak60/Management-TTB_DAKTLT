@@ -1,3 +1,0 @@
-Chỉ chọn 1 vài các sắp xếp theo tên hoặc số lượng trước demo
-Để sắp xếp theo chủng loại mã khi nào hỏi gv yêu cầu làm thì thực hiện
-fiel json 

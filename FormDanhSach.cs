@@ -208,30 +208,7 @@ namespace QUANLY_TTB
             LoadDataToGrid();
         }
 
-        private void dgvDanhSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void panelM2_DanhSach_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void cboSortCriteria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelM2_DanhSach_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelM2_DanhSach_Paint_2(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
 
